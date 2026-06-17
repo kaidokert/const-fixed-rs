@@ -1979,57 +1979,57 @@ impl<F: Fixed> FromStr for Wrapping<F> {
 }
 
 macro_rules! op {
-    ($wrapping:ident, $Op:ident $op:ident, $OpAssign:ident $op_assign:ident) => {
+    ($Qual:ident, $wrapping:ident, $Op:ident $op:ident, $OpAssign:ident $op_assign:ident) => {
         impl<F: Fixed> $Op<Wrapping<F>> for Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: Wrapping<F>) -> Wrapping<F> {
-                Wrapping((self.0).$wrapping(other.0))
+                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
             }
         }
         impl<F: Fixed> $Op<Wrapping<F>> for &Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: Wrapping<F>) -> Wrapping<F> {
-                Wrapping((self.0).$wrapping(other.0))
+                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
             }
         }
         impl<F: Fixed> $Op<&Wrapping<F>> for Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: &Wrapping<F>) -> Wrapping<F> {
-                Wrapping((self.0).$wrapping(other.0))
+                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
             }
         }
         impl<F: Fixed> $Op<&Wrapping<F>> for &Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: &Wrapping<F>) -> Wrapping<F> {
-                Wrapping((self.0).$wrapping(other.0))
+                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
             }
         }
         impl<F: Fixed> $OpAssign<Wrapping<F>> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: Wrapping<F>) {
-                self.0 = (self.0).$wrapping(other.0);
+                self.0 = <F as $Qual>::$wrapping(self.0, other.0);
             }
         }
         impl<F: Fixed> $OpAssign<&Wrapping<F>> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: &Wrapping<F>) {
-                self.0 = (self.0).$wrapping(other.0);
+                self.0 = <F as $Qual>::$wrapping(self.0, other.0);
             }
         }
         impl<F: Fixed> $OpAssign<F> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: F) {
-                self.0 = (self.0).$wrapping(other);
+                self.0 = <F as $Qual>::$wrapping(self.0, other);
             }
         }
         impl<F: Fixed> $OpAssign<&F> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: &F) {
-                self.0 = (self.0).$wrapping(*other);
+                self.0 = <F as $Qual>::$wrapping(self.0, *other);
             }
         }
     };
@@ -2192,7 +2192,7 @@ impl<F: Fixed> Neg for Wrapping<F> {
     type Output = Wrapping<F>;
     #[inline]
     fn neg(self) -> Wrapping<F> {
-        Wrapping((self.0).wrapping_neg())
+        Wrapping(<F as Fixed>::wrapping_neg(self.0))
     }
 }
 
@@ -2200,14 +2200,14 @@ impl<F: Fixed> Neg for &Wrapping<F> {
     type Output = Wrapping<F>;
     #[inline]
     fn neg(self) -> Wrapping<F> {
-        Wrapping((self.0).wrapping_neg())
+        Wrapping(<F as Fixed>::wrapping_neg(self.0))
     }
 }
-op! { wrapping_add, Add add, AddAssign add_assign }
-op! { wrapping_sub, Sub sub, SubAssign sub_assign }
-op! { wrapping_mul, Mul mul, MulAssign mul_assign }
-op! { wrapping_div, Div div, DivAssign div_assign }
-op! { rem, Rem rem, RemAssign rem_assign }
+op! { Fixed, wrapping_add, Add add, AddAssign add_assign }
+op! { Fixed, wrapping_sub, Sub sub, SubAssign sub_assign }
+op! { Fixed, wrapping_mul, Mul mul, MulAssign mul_assign }
+op! { Fixed, wrapping_div, Div div, DivAssign div_assign }
+op! { Rem, rem, Rem rem, RemAssign rem_assign }
 
 impl<F> Not for Wrapping<F>
 where
