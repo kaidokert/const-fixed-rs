@@ -25,7 +25,7 @@ borsh = { default-features = false, optional = true, version = "1" }
 bytemuck = "1.2"
 defmt = { optional = true, version = "1.0.1" }
 half = { default-features = false, version = ">= 1.8, < 3" }
-num-traits = { default-features = false, features = ["i128"], optional = true, version = "0.2.18" }
+num-traits = { package = "const-num-traits", version = "0.2.1", default-features = false, optional = true }
 serde = { default-features = false, optional = true, version = "1.0.210" }
 typenum = "1.14"
 

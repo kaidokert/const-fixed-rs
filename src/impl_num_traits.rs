@@ -213,6 +213,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac: $LeEqU> Euclid for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn div_euclid(self, v: Self) -> Self {
                 self.div_euclid(v)
@@ -231,6 +232,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> CheckedAdd for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn checked_add(self, v: Self) -> Option<Self> {
                 self.checked_add(v)
@@ -238,6 +240,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> CheckedSub for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn checked_sub(self, v: Self) -> Option<Self> {
                 self.checked_sub(v)
@@ -254,6 +257,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac: $LeEqU> CheckedMul for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn checked_mul(self, v: Self) -> Option<Self> {
                 self.checked_mul(v)
@@ -261,6 +265,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac: $LeEqU> CheckedDiv for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn checked_div(self, v: Self) -> Option<Self> {
                 self.checked_div(v)
@@ -268,6 +273,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> CheckedRem for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn checked_rem(self, v: Self) -> Option<Self> {
                 self.checked_rem(v)
@@ -275,6 +281,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> CheckedShl for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn checked_shl(self, rhs: u32) -> Option<Self> {
                 self.checked_shl(rhs)
@@ -282,6 +289,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> CheckedShr for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn checked_shr(self, rhs: u32) -> Option<Self> {
                 self.checked_shr(rhs)
@@ -310,6 +318,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> SaturatingAdd for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn saturating_add(self, v: Self) -> Self {
                 self.saturating_add(v)
@@ -317,6 +326,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> SaturatingSub for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn saturating_sub(self, v: Self) -> Self {
                 self.saturating_sub(v)
@@ -324,6 +334,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac: $LeEqU> SaturatingMul for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn saturating_mul(self, v: Self) -> Self {
                 self.saturating_mul(v)
@@ -331,6 +342,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> WrappingAdd for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn wrapping_add(self, v: Self) -> Self {
                 self.wrapping_add(v)
@@ -338,6 +350,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> WrappingSub for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn wrapping_sub(self, v: Self) -> Self {
                 self.wrapping_sub(v)
@@ -354,6 +367,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac: $LeEqU> WrappingMul for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn wrapping_mul(self, v: Self) -> Self {
                 self.wrapping_mul(v)
@@ -361,6 +375,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> WrappingShl for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn wrapping_shl(self, rhs: u32) -> Self {
                 self.wrapping_shl(rhs)
@@ -368,6 +383,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> WrappingShr for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn wrapping_shr(self, rhs: u32) -> Self {
                 self.wrapping_shr(rhs)
@@ -375,6 +391,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> OverflowingAdd for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn overflowing_add(self, v: Self) -> (Self, bool) {
                 self.overflowing_add(v)
@@ -382,6 +399,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac> OverflowingSub for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn overflowing_sub(self, v: Self) -> (Self, bool) {
                 self.overflowing_sub(v)
@@ -389,6 +407,7 @@ macro_rules! impl_traits {
         }
 
         impl<Frac: $LeEqU> OverflowingMul for $Fixed<Frac> {
+            type Output = Self;
             #[inline]
             fn overflowing_mul(self, v: Self) -> (Self, bool) {
                 self.overflowing_mul(v)
