@@ -596,7 +596,7 @@ macro_rules! impl_format_helper {
             }
 
             fn div_rem_10(val: $U) -> ($U, u8) {
-                (val / 10, (val % 10).wrapping_cast())
+                (val / 10, WrappingCast::wrapping_cast(val % 10))
             }
 
             fn wrapping_neg(val: $U) -> $U {
