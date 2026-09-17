@@ -539,7 +539,7 @@ mod tests {
         assert_eq!(f64::from_fixed(FRAC_1_PI), f64::consts::FRAC_1_PI);
         assert_eq!(f64::from_fixed(FRAC_2_PI), f64::consts::FRAC_2_PI);
         // Since 1 < SQRT_PI < 2, we use EPSILON.
-        assert!((f64::from_fixed(SQRT_PI) - f64::consts::PI.sqrt()).abs() <= f64::EPSILON);
+        assert!((f64::from_fixed(SQRT_PI) - f64::consts::PI.sqrt()).abs() <= <f64>::EPSILON);
         assert_eq!(
             f64::from_fixed(FRAC_1_SQRT_PI),
             f64::consts::FRAC_2_SQRT_PI / 2.0
@@ -559,10 +559,12 @@ mod tests {
         assert_eq!(f64::from_fixed(LN_10), f64::consts::LN_10);
         assert_eq!(f64::from_fixed(PHI), 1.25f64.sqrt() + 0.5);
         // Since 0.5 < FRAC_1_PHI < 1, we use EPSILON / 2.
-        assert!((f64::from_fixed(FRAC_1_PHI) - (1.25f64.sqrt() - 0.5)).abs() <= f64::EPSILON / 2.0);
+        assert!(
+            (f64::from_fixed(FRAC_1_PHI) - (1.25f64.sqrt() - 0.5)).abs() <= <f64>::EPSILON / 2.0
+        );
         // Since 1 < SQRT_PHI < 2, we use EPSILON.
         assert!(
-            (f64::from_fixed(SQRT_PHI) - (1.25f64.sqrt() + 0.5f64).sqrt()).abs() <= f64::EPSILON
+            (f64::from_fixed(SQRT_PHI) - (1.25f64.sqrt() + 0.5f64).sqrt()).abs() <= <f64>::EPSILON
         );
     }
 
