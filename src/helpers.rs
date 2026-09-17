@@ -34,8 +34,10 @@ pub struct ToFixedHelper {
     pub(crate) overflow: bool,
 }
 
+#[derive(Clone, Copy)]
 pub struct ToFloatHelper {
     pub(crate) neg: bool,
+    pub(crate) sext: i128,
     pub(crate) abs: u128,
 }
 
@@ -75,9 +77,10 @@ macro_rules! impl_sealed {
             }
             #[inline]
             fn to_float_helper(self, _: Private) -> ToFloatHelper {
+                let sext = self.to_bits() as i128;
                 let (neg, abs) = int_helper::$Inner::neg_abs(self.to_bits());
                 let abs = abs.into();
-                ToFloatHelper { neg, abs }
+                ToFloatHelper { neg, sext, abs }
             }
             #[inline]
             fn saturating_from_float_helper(_: Private, src: FromFloatHelper) -> Self {
