@@ -16,7 +16,7 @@
 #![allow(deprecated)]
 
 macro_rules! make_helper {
-    ($Float:ident($Bits:ty, $IBits:ident, $prec:expr) $(; use $path:path)?) => {
+    ($Float:ident($Bits:ty, $IBits:ident, $prec:expr, $enable_fast_to_float:meta) $(; use $path:path)?) => {
         #[allow(non_snake_case)]
         pub mod $Float {
             use crate::helpers::{FloatKind, ToFixedHelper, ToFloatHelper, Widest};
@@ -87,6 +87,11 @@ macro_rules! make_helper {
                 frac_bits: u32,
                 int_bits: u32,
             ) -> $Float {
+                // Whether to use the fast path is evaluated at compile time.
+                if let Some(f) = fast_to_float(val, frac_bits, int_bits) {
+                    return f;
+                }
+
                 let fix_bits = frac_bits + int_bits;
 
                 let bits_sign = if val.neg { SIGN_MASK } else { 0 };
@@ -216,17 +221,50 @@ macro_rules! make_helper {
                 conv.dir = dir;
                 FloatKind::Finite { neg, conv }
             }
+
+            #[cfg($enable_fast_to_float)]
+            #[inline]
+            fn fast_to_float(
+                val: ToFloatHelper,
+                frac_bits: u32,
+                int_bits: u32,
+            ) -> Option<$Float> {
+                (int_bits + frac_bits <= PREC && frac_bits <= EXP_MIN.unsigned_abs()).then(||
+                    // The types can be converted losslessly, but we can't use `from` due to type erasure.
+                    // The casting to i128 of `val.sext` is optimized out.
+                    val.sext as $Float * ((1 << frac_bits) as $Float).recip()
+                )
+            }
+
+            // Some types do not support arithmetic operations, thus the feature is gated behing a macro parameter to avoid compile errors.
+            #[cfg(not($enable_fast_to_float))]
+            #[inline]
+            fn fast_to_float(
+                _val: ToFloatHelper,
+                _frac_bits: u32,
+                _int_bits: u32,
+            ) -> Option<$Float> {
+                None
+            }
         }
     };
 }
 
+// For the rationale behind enabling 'fast_to_float', refer to the benchmarks attached in MR #16.
 #[cfg(feature = "nightly-float")]
-make_helper! { f16(u16, i16, 11) }
-make_helper! { half_f16(u16, i16, 11); use half::f16 }
-make_helper! { half_bf16(u16, i16, 8); use half::bf16 }
-make_helper! { f32(u32, i32, 24) }
-make_helper! { f64(u64, i64, 53) }
+make_helper! { f16(u16, i16, 11, any(
+    all(target_arch = "x86", target_feature = "f16c"),
+    all(target_arch = "x86_64", target_feature = "f16c"),
+    all(target_arch = "aarch64", target_feature = "fp16"),
+    all(target_arch = "loongarch64", target_feature = "lsx"),
+)) }
+// `fast_to_float` for `half`'s types would require enabling `num-traits`.
+// And they'd need to be benchmarked.
+make_helper! { half_f16(u16, i16, 11, any()); use half::f16 }
+make_helper! { half_bf16(u16, i16, 8, any()); use half::bf16 }
+make_helper! { f32(u32, i32, 24, all()) }
+make_helper! { f64(u64, i64, 53, all()) }
 #[cfg(feature = "nightly-float")]
-make_helper! { f128(u128, i128, 113) }
-make_helper! { F128(u128, i128, 113); use crate::F128 }
-make_helper! { F128Bits(u128, i128, 113); use crate::F128Bits }
+make_helper! { f128(u128, i128, 113, any()) }
+make_helper! { F128(u128, i128, 113, any()); use crate::F128 }
+make_helper! { F128Bits(u128, i128, 113, any()); use crate::F128Bits }
