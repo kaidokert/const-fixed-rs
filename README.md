@@ -9,7 +9,7 @@ as-is, without any warranty. -->
 
 The [*const-fixed* crate] provides fixed-point numbers.
 
-It is a fork of [upstream *fixed*] by Trevor Spiteri. It:
+It is a fork of [upstream *fixed*]. It:
 
   * implements the numeric traits of the [*const-num-traits* crate], enabled by
     default through the `const-num-traits` feature, with the

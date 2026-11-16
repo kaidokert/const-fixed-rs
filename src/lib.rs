@@ -18,15 +18,6 @@
 
 The [*const-fixed* crate] provides fixed-point numbers.
 
-It is a fork of [upstream *fixed*] by Trevor Spiteri. It:
-
-  * implements the numeric traits of the [*const-num-traits* crate], enabled by
-    default through the `const-num-traits` feature, with the
-    [`FixedConstNum`] trait for using them in generic code;
-  * still implements the upstream [*num-traits* crate] traits through the
-    optional `num-traits` feature, which can be enabled at the same time;
-  * is otherwise the same library as upstream, and follows its releases.
-
   * [`FixedI8`] and [`FixedU8`] are eight-bit fixed-point numbers.
   * [`FixedI16`] and [`FixedU16`] are 16-bit fixed-point numbers.
   * [`FixedI32`] and [`FixedU32`] are 32-bit fixed-point numbers.
@@ -238,7 +229,7 @@ crate, add it as a dependency inside [*Cargo.toml*]:
 
 ```toml
 [dependencies]
-const-fixed = "0.1"
+const-fixed = "1.31"
 ```
 
 The *const-fixed* crate requires rustc version 1.93.0 or later.
@@ -275,9 +266,9 @@ The *const-fixed* crate has these optional feature:
 To enable features, you can add the dependency like this to [*Cargo.toml*]:
 
 ```toml
-[dependencies.const-fixed]
+[dependencies.fixed]
 features = ["serde"]
-version = "0.1"
+version = "1.31"
 ```
 
 ## Experimental optional features
@@ -339,7 +330,6 @@ shall be dual licensed as above, without any additional terms or conditions.
 [*half* crate]: https://crates.io/crates/half
 [*num-traits* crate]: https://crates.io/crates/num-traits
 [*const-num-traits* crate]: https://crates.io/crates/const-num-traits
-[upstream *fixed*]: https://gitlab.com/tspiteri/fixed
 [`FixedConstNum`]: crate::traits::FixedConstNum
 [*serde* crate]: https://crates.io/crates/serde
 [*typenum* crate]: https://crates.io/crates/typenum
@@ -380,7 +370,7 @@ shall be dual licensed as above, without any additional terms or conditions.
 #![cfg_attr(not(feature = "std"), no_std)]
 #![warn(missing_docs)]
 #![warn(unsafe_op_in_unsafe_fn)]
-#![doc(html_root_url = "https://docs.rs/const-fixed/~0.1")]
+#![doc(html_root_url = "https://docs.rs/const-fixed/~1.31")]
 #![doc(html_logo_url = "data:image/svg+xml;base64,
 PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzMuODY3IDMzLjg2NyIgeG1s
 bnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImIiPjxjaXJjbGUgY3g9IjE2LjkzMyIg
