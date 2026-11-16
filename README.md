@@ -9,6 +9,15 @@ as-is, without any warranty. -->
 
 The [*const-fixed* crate] provides fixed-point numbers.
 
+It is a fork of [upstream *fixed*]. It:
+
+  * implements the numeric traits of the [*const-num-traits* crate], enabled by
+    default through the `const-num-traits` feature, with the
+    [`FixedConstNum`] trait for using them in generic code;
+  * still implements the upstream [*num-traits* crate] traits through the
+    optional `num-traits` feature;
+  * is otherwise the same library as upstream, and follows its releases.
+
   * [`FixedI8`] and [`FixedU8`] are eight-bit fixed-point numbers.
   * [`FixedI16`] and [`FixedU16`] are 16-bit fixed-point numbers.
   * [`FixedI32`] and [`FixedU32`] are 32-bit fixed-point numbers.
@@ -243,7 +252,7 @@ crate, add it as a dependency inside [*Cargo.toml*]:
 
 ```toml
 [dependencies]
-const-fixed = "1.31"
+const-fixed = "0.1"
 ```
 
 The *const-fixed* crate requires rustc version 1.93.0 or later.
@@ -280,9 +289,9 @@ The *const-fixed* crate has these optional feature:
 To enable features, you can add the dependency like this to [*Cargo.toml*]:
 
 ```toml
-[dependencies.fixed]
+[dependencies.const-fixed]
 features = ["serde"]
-version = "1.31"
+version = "0.1"
 ```
 
 ## Experimental optional features
@@ -295,7 +304,11 @@ updated to an incompatible newer version.
  1. `num-traits`, disabled by default. This implements some traits from the
     [*num-traits* crate]. (The plan is to promote this to an optional feature
     once the [*num-traits* crate] reaches version 1.0.0.)
- 2. `nightly-float`, disabled by default. This requires the nightly compiler,
+ 2. `const-num-traits`, **enabled by default**. This implements the same traits
+    from the [*const-num-traits* crate], and adds the [`FixedConstNum`] trait
+    for using them in generic code. It can be enabled together with
+    `num-traits`.
+ 3. `nightly-float`, disabled by default. This requires the nightly compiler,
     and implements conversions and comparisons with the experimental [`f16`] and
     [`f128`] primitives. (The plan is to always implement the conversions and
     comparisons and remove this experimental feature once the primitives are
@@ -340,6 +353,9 @@ shall be dual licensed as above, without any additional terms or conditions.
 [*const-fixed* crate]: https://crates.io/crates/const-fixed
 [*half* crate]: https://crates.io/crates/half
 [*num-traits* crate]: https://crates.io/crates/num-traits
+[*const-num-traits* crate]: https://crates.io/crates/const-num-traits
+[upstream *fixed*]: https://gitlab.com/tspiteri/fixed
+[`FixedConstNum`]: https://docs.rs/const-fixed/~0.1/const_fixed/traits/trait.FixedConstNum.html
 [*serde* crate]: https://crates.io/crates/serde
 [*typenum* crate]: https://crates.io/crates/typenum
 [CORDIC]: https://en.wikipedia.org/wiki/CORDIC

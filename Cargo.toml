@@ -7,7 +7,7 @@
 
 [package]
 name = "const-fixed"
-version = "1.31.0"
+version = "0.1.0"
 categories = ["algorithms", "embedded", "mathematics", "no-std"]
 description = "Fixed-point numbers."
 documentation = "https://docs.rs/const-fixed"
