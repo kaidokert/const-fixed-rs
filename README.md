@@ -15,7 +15,7 @@ It is a fork of [upstream *fixed*]. It:
     default through the `const-num-traits` feature, with the
     [`FixedConstNum`] trait for using them in generic code;
   * still implements the upstream [*num-traits* crate] traits through the
-    optional `num-traits` feature, which can be enabled at the same time;
+    optional `num-traits` feature;
   * is otherwise the same library as upstream, and follows its releases.
 
   * [`FixedI8`] and [`FixedU8`] are eight-bit fixed-point numbers.
