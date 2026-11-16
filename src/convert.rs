@@ -1014,8 +1014,8 @@ mod nightly_float {
 /// The first snippet succeeds, and acts as a control.
 ///
 /// ```rust
-/// use fixed::traits::{LosslessTryFrom, LossyFrom};
-/// use fixed::types::*;
+/// use const_fixed::traits::{LosslessTryFrom, LossyFrom};
+/// use const_fixed::types::*;
 /// let _ = I8F8::from(I4F4::default());
 /// let _ = I8F8::from(U7F1::default());
 /// let _ = U8F8::from(U4F4::default());
@@ -1037,119 +1037,119 @@ mod nightly_float {
 ///
 /// Not enough fractional bits.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = I8F8::from(I7F9::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::traits::LosslessTryFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LosslessTryFrom;
+/// use const_fixed::types::*;
 /// let _ = I8F8::lossless_try_from(I7F9::default());
 /// ```
 ///
 /// Not enough integer bits.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = I8F8::from(I9F7::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::*;
 /// let _ = I8F8::lossy_from(I9F7::default());
 /// ```
 ///
 /// Not enough integer bits for unsigned to signed.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = I8F8::from(U8F0::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::*;
 /// let _ = I8F8::lossy_from(U8F0::default());
 /// ```
 ///
 /// Not  enough fractional bits.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = U8F8::from(U7F9::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::traits::LosslessTryFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LosslessTryFrom;
+/// use const_fixed::types::*;
 /// let _ = U8F8::lossless_try_from(U7F9::default());
 /// ```
 ///
 /// Not enough integer bits.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = U8F8::from(U9F7::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::*;
 /// let _ = U8F8::lossy_from(U9F7::default());
 /// ```
 ///
 /// Signed to unsigned.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = U8F8::from(I4F4::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::*;
 /// let _ = U8F8::lossy_from(I4F4::default());
 /// ```
 ///
 /// Not enough fractional bits.
 /// ```rust,compile_fail
-/// use fixed::traits::LosslessTryFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LosslessTryFrom;
+/// use const_fixed::types::*;
 /// let _ = I8F8::lossless_try_from(I55F9::default());
 /// ```
 ///
 /// Not enough integer bits.
 /// ```rust,compile_fail
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::*;
 /// let _ = I8F8::lossy_from(I9F55::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::*;
 /// let _ = U8F8::lossy_from(U9F55::default());
 /// ```
 ///
 /// Signed to unsigned.
 /// ```rust,compile_fail
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::*;
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::*;
 /// let _ = I8F8::lossy_from(U8F56::default());
 /// ```
 ///
 /// Not enough fractional bits.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = usize::from(U16F16::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = isize::from(I16F16::default());
 /// ```
 ///
 /// usize from i8 or i16.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = usize::from(I8F0::default());
 /// ```
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = usize::from(I16F0::default());
 /// ```
 ///
 /// isize form u16.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// let _ = isize::from(U16F0::default());
 /// ```
 fn _compile_fail_tests() {}

@@ -7,7 +7,7 @@ as-is, without any warranty. -->
 
 # Fixed-point numbers
 
-The [*fixed* crate] provides fixed-point numbers.
+The [*const-fixed* crate] provides fixed-point numbers.
 
   * [`FixedI8`] and [`FixedU8`] are eight-bit fixed-point numbers.
   * [`FixedI16`] and [`FixedU16`] are 16-bit fixed-point numbers.
@@ -127,12 +127,12 @@ The conversions supported cover the following cases.
 
 Details on other releases can be found in [*RELEASES.md*].
 
-[*RELEASES.md*]: https://gitlab.com/tspiteri/fixed/blob/master/RELEASES.md
+[*RELEASES.md*]: https://github.com/kaidokert/const-fixed-rs/blob/main/RELEASES.md
 
 ## Quick examples
 
 ```rust
-use fixed::types::I20F12;
+use const_fixed::types::I20F12;
 
 // 19/3 = 6 1/3
 let six_and_third = I20F12::from_num(19) / 3;
@@ -151,7 +151,7 @@ combinations of integer and fractional bits adding up to a total of eight, 16,
 32, 64 or 128 bits.
 
 ```rust
-use fixed::types::{I4F4, I4F12};
+use const_fixed::types::{I4F4, I4F12};
 
 // -8 ≤ I4F4 < 8 with steps of 1/16 (~0.06)
 let a = I4F4::from_num(1);
@@ -201,7 +201,7 @@ that the difference between two numbers is less than
 <span style="white-space: nowrap;">4 × <i>Δ</i></span>:
 
 ```rust
-use fixed::types::I20F12;
+use const_fixed::types::I20F12;
 
 let a = I20F12::from_num(1.5);
 // b is not exactly 1.5 because of rounding errors
@@ -225,7 +225,7 @@ parse literals. It supports
     including hexadecimal.
 
 ```rust
-use fixed::types::I16F16;
+use const_fixed::types::I16F16;
 
 // 0.1275e2 is 12.75
 const TWELVE_POINT_75: I16F16 = I16F16::lit("0.127_5e2");
@@ -236,21 +236,21 @@ let sum = TWELVE_POINT_75 + ONE_POINT_5;
 assert_eq!(sum, 14.25);
 ```
 
-## Using the *fixed* crate
+## Using the *const-fixed* crate
 
-The *fixed* crate is available on [crates.io][*fixed* crate]. To use it in your
+The *const-fixed* crate is available on [crates.io][*const-fixed* crate]. To use it in your
 crate, add it as a dependency inside [*Cargo.toml*]:
 
 ```toml
 [dependencies]
-fixed = "1.31"
+const-fixed = "1.31"
 ```
 
-The *fixed* crate requires rustc version 1.93.0 or later.
+The *const-fixed* crate requires rustc version 1.93.0 or later.
 
 ## Optional features
 
-The *fixed* crate has these optional feature:
+The *const-fixed* crate has these optional feature:
 
  1. `arbitrary`, disabled by default. This provides the generation of arbitrary
     fixed-point numbers from raw, unstructured data. This feature requires the
@@ -337,7 +337,7 @@ shall be dual licensed as above, without any additional terms or conditions.
 [*borsh* crate]: https://crates.io/crates/borsh
 [*cordic* crate]: https://crates.io/crates/cordic
 [*defmt* crate]: https://crates.io/crates/defmt
-[*fixed* crate]: https://crates.io/crates/fixed
+[*const-fixed* crate]: https://crates.io/crates/const-fixed
 [*half* crate]: https://crates.io/crates/half
 [*num-traits* crate]: https://crates.io/crates/num-traits
 [*serde* crate]: https://crates.io/crates/serde

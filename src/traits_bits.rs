@@ -91,8 +91,8 @@ macro_rules! impl_bits {
 ///
 /// ```rust
 /// use az::OverflowingAs;
-/// use fixed::traits::Fixed;
-/// use fixed::types::*;
+/// use const_fixed::traits::Fixed;
+/// use const_fixed::types::*;
 /// fn limited_positive_bits<F: Fixed>(fixed: F) -> Option<u32> {
 ///     let bits = fixed.to_bits();
 ///     match bits.overflowing_as::<u32>() {

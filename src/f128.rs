@@ -66,8 +66,8 @@ pub(crate) mod private {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::F128;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::F128;
     /// assert_eq!(I16F16::ONE.to_num::<F128>(), F128::ONE);
     /// assert_eq!(I16F16::from_num(F128::ONE), I16F16::ONE);
     ///
@@ -186,7 +186,7 @@ impl F128 {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     /// let infinity_bits = 0x7FFF_u128 << 112;
     /// assert!(F128::from_bits(infinity_bits - 1).is_finite());
     /// assert!(!F128::from_bits(infinity_bits).is_finite());
@@ -202,7 +202,7 @@ impl F128 {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     /// assert_eq!(F128::ONE.to_bits(), 0x3FFF_u128 << 112);
     /// assert_ne!(F128::ONE.to_bits(), 1u128);
     /// ```
@@ -262,7 +262,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::NAN.is_nan());
     ///
@@ -281,7 +281,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::INFINITY.is_infinite());
     /// assert!(F128::NEG_INFINITY.is_infinite());
@@ -300,7 +300,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::ONE.is_finite());
     /// assert!(F128::MAX.is_finite());
@@ -320,7 +320,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::ZERO.is_zero());
     /// assert!(F128::NEG_ZERO.is_zero());
@@ -339,7 +339,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::MIN_POSITIVE_SUB.is_subnormal());
     ///
@@ -358,7 +358,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::MIN.is_normal());
     /// assert!(F128::MIN_POSITIVE.is_normal());
@@ -385,7 +385,7 @@ impl F128 {
     ///
     /// ```rust
     /// use core::num::FpCategory;
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert_eq!(F128::ZERO.classify(), FpCategory::Zero);
     /// assert_eq!(F128::MIN_POSITIVE_SUB.classify(), FpCategory::Subnormal);
@@ -423,7 +423,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// // -0 == +0, but -0 bits != +0 bits
     /// assert_eq!(F128::NEG_ZERO, F128::ZERO);
@@ -450,7 +450,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert_eq!(F128::ONE.signum(), F128::ONE);
     /// assert_eq!(F128::INFINITY.signum(), F128::ONE);
@@ -476,7 +476,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert_eq!(F128::ONE.copysign(F128::NEG_ZERO), F128::NEG_ONE);
     /// assert_eq!(F128::ONE.copysign(F128::ZERO), F128::ONE);
@@ -499,7 +499,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::ZERO.is_sign_positive());
     /// assert!(F128::MAX.is_sign_positive());
@@ -521,7 +521,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert!(F128::NEG_ZERO.is_sign_negative());
     /// assert!(F128::MIN.is_sign_negative());
@@ -544,7 +544,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert_eq!(F128::ZERO.max(F128::ONE), F128::ONE);
     /// ```
@@ -565,7 +565,7 @@ impl F128 {
     /// # Example
     ///
     /// ```rust
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// assert_eq!(F128::ZERO.min(F128::ONE), F128::ZERO);
     /// ```
@@ -593,7 +593,7 @@ impl F128 {
     /// # Examples
     ///
     /// ```
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     /// assert_eq!(F128::MIN.clamp(F128::NEG_ONE, F128::ONE), F128::NEG_ONE);
     /// assert_eq!(F128::ZERO.clamp(F128::NEG_ONE, F128::ONE), F128::ZERO);
     /// assert_eq!(F128::MAX.clamp(F128::NEG_ONE, F128::ONE), F128::ONE);
@@ -636,7 +636,7 @@ impl F128 {
     ///
     /// ```rust
     /// use core::cmp::Ordering;
-    /// use fixed::F128;
+    /// use const_fixed::F128;
     ///
     /// let neg_nan = F128::NAN.copysign(F128::NEG_ONE);
     /// let pos_nan = F128::NAN.copysign(F128::ONE);

@@ -2,7 +2,7 @@
 //!
 //! ```
 //! # #[cfg(any())] {
-//! use fixed::types::I16F16;
+//! use const_fixed::types::I16F16;
 //!
 //! let val = I16F16::from_num(3.125);
 //! defmt::error!("val = {}", val);        // → “val = 3.125”

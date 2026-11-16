@@ -41,8 +41,8 @@ use core::str::FromStr;
 /// This panics even when debug assertions are disabled.
 ///
 /// ```rust,should_panic
-/// use fixed::types::I16F16;
-/// use fixed::Strict;
+/// use const_fixed::types::I16F16;
+/// use const_fixed::Strict;
 /// let max = Strict(I16F16::MAX);
 /// let delta = Strict(I16F16::DELTA);
 /// let _overflow = max + delta;
@@ -65,8 +65,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict::<I16F16>::ZERO, Strict(I16F16::ZERO));
     /// ```
     pub const ZERO: Strict<F> = Strict(F::ZERO);
@@ -79,8 +79,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict::<I16F16>::DELTA, Strict(I16F16::DELTA));
     /// ```
     pub const DELTA: Strict<F> = Strict(F::DELTA);
@@ -93,8 +93,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict::<I16F16>::MIN, Strict(I16F16::MIN));
     /// ```
     pub const MIN: Strict<F> = Strict(F::MIN);
@@ -107,8 +107,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict::<I16F16>::MAX, Strict(I16F16::MAX));
     /// ```
     pub const MAX: Strict<F> = Strict(F::MAX);
@@ -121,8 +121,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// assert!(Strict::<I16F16>::IS_SIGNED);
     /// assert!(!Strict::<U16F16>::IS_SIGNED);
     /// ```
@@ -136,8 +136,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict::<I16F16>::INT_NBITS, I16F16::INT_NBITS);
     /// ```
     pub const INT_NBITS: u32 = F::INT_NBITS;
@@ -150,8 +150,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict::<I16F16>::FRAC_NBITS, I16F16::FRAC_NBITS);
     /// ```
     pub const FRAC_NBITS: u32 = F::FRAC_NBITS;
@@ -165,8 +165,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict::<I16F16>::from_bits(0x1C), Strict(I16F16::from_bits(0x1C)));
     /// ```
     #[inline]
@@ -183,8 +183,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x1C));
     /// assert_eq!(s.to_bits(), 0x1C);
     /// ```
@@ -202,8 +202,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "big") {
     ///     assert_eq!(Strict::from_be(s), s);
@@ -225,8 +225,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "little") {
     ///     assert_eq!(Strict::from_le(s), s);
@@ -247,8 +247,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "big") {
     ///     assert_eq!(s.to_be(), s);
@@ -270,8 +270,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "little") {
     ///     assert_eq!(s.to_le(), s);
@@ -293,8 +293,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x1234_5678));
     /// let swapped = Strict(I16F16::from_bits(0x7856_3412));
     /// assert_eq!(s.swap_bytes(), swapped);
@@ -315,8 +315,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let bytes = [0x12, 0x34, 0x56, 0x78];
     /// assert_eq!(
     ///     Strict::<I16F16>::from_be_bytes(bytes),
@@ -338,8 +338,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let bytes = [0x78, 0x56, 0x34, 0x12];
     /// assert_eq!(
     ///     Strict::<I16F16>::from_le_bytes(bytes),
@@ -361,8 +361,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let bytes = if cfg!(target_endian = "big") {
     ///     [0x12, 0x34, 0x56, 0x78]
     /// } else {
@@ -387,8 +387,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(
     ///     Strict::<I16F16>::from_bits(0x1234_5678).to_be_bytes(),
     ///     [0x12, 0x34, 0x56, 0x78]
@@ -408,8 +408,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(
     ///     Strict::<I16F16>::from_bits(0x1234_5678).to_le_bytes(),
     ///     [0x78, 0x56, 0x34, 0x12]
@@ -429,8 +429,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let bytes = if cfg!(target_endian = "big") {
     ///     [0x12, 0x34, 0x56, 0x78]
     /// } else {
@@ -478,8 +478,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I4F4, I16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I4F4, I16F16};
+    /// use const_fixed::Strict;
     /// let src = I16F16::from_num(1.75);
     /// let dst = Strict::<I4F4>::from_num(src);
     /// assert_eq!(dst, Strict(I4F4::from_num(1.75)));
@@ -488,8 +488,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics even when debug assertions are disabled.
     ///
     /// ```should_panic
-    /// use fixed::types::{I4F4, I16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I4F4, I16F16};
+    /// use const_fixed::Strict;
     /// let src = I16F16::from_bits(0x1234_5678);
     /// let _overflow = Strict::<I4F4>::from_num(src);
     /// ```
@@ -530,8 +530,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, I4F4};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, I4F4};
+    /// use const_fixed::Strict;
     /// let src = Strict(I4F4::from_num(1.75));
     /// assert_eq!(src.to_num::<I16F16>(), I16F16::from_num(1.75));
     /// ```
@@ -539,8 +539,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics even when debug assertions are disabled.
     ///
     /// ```should_panic
-    /// use fixed::types::{I2F6, I4F4};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I2F6, I4F4};
+    /// use const_fixed::Strict;
     /// let src = Strict(I4F4::MAX);
     /// let _overflow = src.to_num::<I2F6>();
     /// ```
@@ -568,8 +568,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// // 16 + 3/4 = 16.75
     /// let check = Strict(I8F8::from_bits((16 << 8) + (3 << 8) / 4));
     /// assert_eq!(Strict::<I8F8>::from_str_dec("16.75"), check);
@@ -578,8 +578,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_str_dec("1.2.");
     /// ```
     #[inline]
@@ -605,8 +605,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let check = Strict(I8F8::from_bits(0b1110001 << (8 - 1)));
     /// assert_eq!(Strict::<I8F8>::from_str_binary("111000.1"), Ok(check));
     /// ```
@@ -614,8 +614,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_str_binary("1.2");
     /// ```
     ///
@@ -648,8 +648,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let check = Strict(I8F8::from_bits(0o1654 << (8 - 3)));
     /// assert_eq!(Strict::<I8F8>::from_str_octal("165.4"), Ok(check));
     /// ```
@@ -657,8 +657,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_str_octal("1.8");
     /// ```
     ///
@@ -691,8 +691,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let check = Strict(I8F8::from_bits(0xFFE));
     /// assert_eq!(Strict::<I8F8>::from_str_hex("F.FE"), Ok(check));
     /// ```
@@ -700,8 +700,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_str_hex("1.G");
     /// ```
     ///
@@ -734,8 +734,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// // 16 + 3/4 = 16.75
     /// let check = Strict(I8F8::from_bits((16 << 8) + (3 << 8) / 4));
     /// assert_eq!(Strict::<I8F8>::from_ascii(b"16.75"), check);
@@ -744,8 +744,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_ascii(b"1.2.");
     /// ```
     #[inline]
@@ -771,8 +771,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let check = Strict(I8F8::from_bits(0b1110001 << (8 - 1)));
     /// assert_eq!(Strict::<I8F8>::from_ascii_binary(b"111000.1"), check);
     /// ```
@@ -780,8 +780,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_ascii_binary(b"1.2");
     /// ```
     #[inline]
@@ -806,8 +806,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let check = Strict(I8F8::from_bits(0o1654 << (8 - 3)));
     /// assert_eq!(Strict::<I8F8>::from_ascii_octal(b"165.4"), check);
     /// ```
@@ -815,8 +815,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_ascii_octal(b"1.8");
     /// ```
     #[inline]
@@ -841,8 +841,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let check = Strict(I8F8::from_bits(0xFFE));
     /// assert_eq!(Strict::<I8F8>::from_ascii_hex(b"F.FE"), check);
     /// ```
@@ -850,8 +850,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of a parsing error.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let _error = Strict::<I8F8>::from_ascii_hex(b"1.G");
     /// ```
     #[inline]
@@ -875,8 +875,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict(I16F16::from_num(12.25)).int(), Strict(I16F16::from_num(12)));
     /// assert_eq!(Strict(I16F16::from_num(-12.25)).int(), Strict(I16F16::from_num(-13)));
     /// ```
@@ -903,8 +903,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict(I16F16::from_num(12.25)).frac(), Strict(I16F16::from_num(0.25)));
     /// assert_eq!(Strict(I16F16::from_num(-12.25)).frac(), Strict(I16F16::from_num(0.75)));
     /// ```
@@ -925,8 +925,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let three = Strict(I16F16::from_num(3));
     /// assert_eq!(Strict(I16F16::from_num(3.9)).round_to_zero(), three);
     /// assert_eq!(Strict(I16F16::from_num(-3.9)).round_to_zero(), -three);
@@ -951,8 +951,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let two_half = Strict(I16F16::from_num(5) / 2);
     /// assert_eq!(two_half.ceil(), Strict(I16F16::from_num(3)));
     /// ```
@@ -960,8 +960,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let _overflow = Strict(I16F16::MAX).ceil();
     /// ```
     #[inline]
@@ -988,8 +988,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let two_half = Strict(I16F16::from_num(5) / 2);
     /// assert_eq!(two_half.floor(), Strict(I16F16::from_num(2)));
     /// ```
@@ -997,8 +997,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I0F32;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I0F32;
+    /// use const_fixed::Strict;
     /// let _overflow = Strict(I0F32::MIN).floor();
     /// ```
     #[inline]
@@ -1022,8 +1022,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let two_half = Strict(I16F16::from_num(5) / 2);
     /// assert_eq!(two_half.round(), Strict(I16F16::from_num(3)));
     /// assert_eq!((-two_half).round(), Strict(I16F16::from_num(-3)));
@@ -1032,8 +1032,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let _overflow = Strict(I16F16::MAX).round();
     /// ```
     #[inline]
@@ -1058,8 +1058,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let two_half = Strict(I16F16::from_num(2.5));
     /// assert_eq!(two_half.round_ties_even(), Strict(I16F16::from_num(2)));
     /// let three_half = Strict(I16F16::from_num(3.5));
@@ -1069,8 +1069,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let max = Strict(I16F16::MAX);
     /// let _overflow = max.round_ties_even();
     /// ```
@@ -1089,8 +1089,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(s.count_ones(), s.0.count_ones());
     /// ```
@@ -1108,8 +1108,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(s.count_zeros(), s.0.count_zeros());
     /// ```
@@ -1126,8 +1126,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(U16F16::from_bits(0xFF00_00FF));
     /// assert_eq!(s.leading_ones(), s.0.leading_ones());
     /// ```
@@ -1145,8 +1145,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(s.leading_zeros(), s.0.leading_zeros());
     /// ```
@@ -1164,8 +1164,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(U16F16::from_bits(0xFF00_00FF));
     /// assert_eq!(s.trailing_ones(), s.0.trailing_ones());
     /// ```
@@ -1183,8 +1183,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let s = Strict(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(s.trailing_zeros(), s.0.trailing_zeros());
     /// ```
@@ -1206,16 +1206,16 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I0F32;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I0F32;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict(I0F32::lit("0b0.0001")).sqrt().0, I0F32::lit("0b0.01"));
     /// ```
     ///
     /// The following panics because the input value is negative.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let neg = Strict(I16F16::from_num(-1));
     /// let _sqrt_neg = neg.sqrt();
     /// ```
@@ -1223,8 +1223,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I0F32;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I0F32;
+    /// use const_fixed::Strict;
     /// let u = Strict(I0F32::from_num(0.25));
     /// let _overflow = u.sqrt();
     /// ```
@@ -1287,8 +1287,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let i = I16F16::from_bits(0x1234_5678);
     /// assert_eq!(Strict(i).reverse_bits(), Strict(i.reverse_bits()));
     /// ```
@@ -1306,8 +1306,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let i = I16F16::from_bits(0x00FF_FF00);
     /// assert_eq!(Strict(i).rotate_left(12), Strict(i.rotate_left(12)));
     /// ```
@@ -1325,8 +1325,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let i = I16F16::from_bits(0x00FF_FF00);
     /// assert_eq!(Strict(i).rotate_right(12), Strict(i.rotate_right(12)));
     /// ```
@@ -1344,8 +1344,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert!(Strict(I16F16::ZERO).is_zero());
     /// assert!(!Strict(I16F16::from_num(4.3)).is_zero());
     /// ```
@@ -1367,8 +1367,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// assert_eq!(St::from_num(-1).dist(St::from_num(4)), St::from_num(5));
     /// ```
@@ -1376,8 +1376,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// let _overflow = St::MIN.dist(St::ZERO);
     /// ```
@@ -1396,8 +1396,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let three = Strict(I16F16::from_num(3));
     /// let four = Strict(I16F16::from_num(4));
     /// assert_eq!(three.mean(four), Strict(I16F16::from_num(3.5)));
@@ -1418,8 +1418,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// type St = Strict<I8F8>;
     /// // hypot(3, 4) == 5
     /// assert_eq!(St::from_num(3).hypot(St::from_num(4)), St::from_num(5));
@@ -1428,8 +1428,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// type St = Strict<I8F8>;
     /// // hypot(88, 105) == 137, which does not fit
     /// let _overflow = St::from_num(88).hypot(St::from_num(105));
@@ -1453,8 +1453,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F24;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F24;
+    /// use const_fixed::Strict;
     /// let quarter = Strict(I8F24::from_num(0.25));
     /// assert_eq!(quarter.recip(), Strict(I8F24::from_num(4)));
     /// ```
@@ -1462,8 +1462,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I8F24;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F24;
+    /// use const_fixed::Strict;
     /// let frac_1_512 = Strict(I8F24::ONE / 512);
     /// let _overflow = frac_1_512.recip();
     /// ```
@@ -1488,8 +1488,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let one_point_5 = Strict::<I16F16>::from_num(1.5);
     /// let four = Strict::<I16F16>::from_num(4);
     /// let four_point_5 = Strict::<I16F16>::from_num(4.5);
@@ -1499,8 +1499,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let two = Strict::<I16F16>::from_num(2);
     /// let max = Strict::<I16F16>::MAX;
     /// let _overflow = max.next_multiple_of(two);
@@ -1526,8 +1526,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let half = Strict(I16F16::from_num(0.5));
     /// let three = Strict(I16F16::from_num(3));
     /// let four = Strict(I16F16::from_num(4));
@@ -1540,8 +1540,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let one = Strict(I16F16::ONE);
     /// let max = Strict(I16F16::MAX);
     /// let _overflow = max.mul_add(one, one);
@@ -1567,8 +1567,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let half = Strict(I16F16::from_num(0.5));
     /// let three = Strict(I16F16::from_num(3));
     /// let four = Strict(I16F16::from_num(4));
@@ -1578,8 +1578,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let max = Strict(I16F16::MAX);
     /// let _overflow = max.add_prod(max, Strict(I16F16::from_num(3)));
     /// ```
@@ -1604,8 +1604,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let mut acc = Strict(I16F16::from_num(3));
     /// acc.mul_acc(Strict(I16F16::from_num(4)), Strict(I16F16::from_num(0.5)));
     /// assert_eq!(acc, Strict(I16F16::from_num(5)));
@@ -1614,8 +1614,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let mut acc = Strict(I16F16::MAX);
     /// acc.mul_acc(Strict(I16F16::MAX), Strict(I16F16::from_num(3)));
     /// ```
@@ -1639,8 +1639,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let num = Strict(I16F16::from_num(7.5));
     /// let den = Strict(I16F16::from_num(2));
     /// assert_eq!(num.div_euclid(den), Strict(I16F16::from_num(3)));
@@ -1649,8 +1649,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let quarter = Strict(I16F16::from_num(0.25));
     /// let _overflow = Strict(I16F16::MAX).div_euclid(quarter);
     /// ```
@@ -1675,8 +1675,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let num = Strict(I16F16::from_num(7.5));
     /// let den = Strict(I16F16::from_num(2));
     /// assert_eq!(num.rem_euclid(den), Strict(I16F16::from_num(1.5)));
@@ -1703,8 +1703,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let num = Strict(I16F16::from_num(7.5));
     /// assert_eq!(num.div_euclid_int(2), Strict(I16F16::from_num(3)));
     /// ```
@@ -1712,8 +1712,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let min = Strict(I16F16::MIN);
     /// let _overflow = min.div_euclid_int(-1);
     /// ```
@@ -1738,8 +1738,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let num = Strict(I16F16::from_num(7.5));
     /// assert_eq!(num.rem_euclid_int(2), Strict(I16F16::from_num(1.5)));
     /// assert_eq!((-num).rem_euclid_int(2), Strict(I16F16::from_num(0.5)));
@@ -1748,8 +1748,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I8F8;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Strict;
     /// let num = Strict(I8F8::from_num(-7.5));
     /// // -128 ≤ Fix < 128, so the answer 192.5 overflows
     /// let _overflow = num.rem_euclid_int(200);
@@ -1771,8 +1771,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// let num = Strict(I16F16::from_num(1.5));
     /// assert_eq!(num.unbounded_shl(5), num << 5);
@@ -1794,8 +1794,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// let num = Strict(I16F16::from_num(1.5));
     /// assert_eq!(num.unbounded_shr(5), num >> 5);
@@ -1822,8 +1822,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// assert_eq!(St::from_num(0.5).lerp(St::ZERO, St::MAX), St::MAX / 2);
     /// ```
@@ -1831,8 +1831,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// let _overflow = St::from_num(1.5).lerp(St::ZERO, St::MAX);
     /// ```
@@ -1856,8 +1856,8 @@ impl<F: Fixed> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// assert_eq!(
     ///     St::from_num(25).inv_lerp(St::from_num(20), St::from_num(40)),
@@ -1868,8 +1868,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because `start`&nbsp;=&nbsp;`end`.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// let two = St::from_num(2);
     /// let _zero_range = two.inv_lerp(two, two);
@@ -1878,8 +1878,8 @@ impl<F: Fixed> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// type St = Strict<I16F16>;
     /// let _overflow = St::MAX.inv_lerp(St::ZERO, St::from_num(0.5));
     /// ```
@@ -1914,8 +1914,8 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     ///
     /// let n = Strict(-I16F16::DELTA);
     /// assert_eq!(n.cast_unsigned(), Strict(U16F16::MAX));
@@ -1937,8 +1937,8 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I4F4;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I4F4;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict(I4F4::from_num(-3)).signed_bits(), 7);      // “_101.0000”
     /// assert_eq!(Strict(I4F4::from_num(-1)).signed_bits(), 5);      // “___1.0000”
     /// assert_eq!(Strict(I4F4::from_num(-0.0625)).signed_bits(), 1); // “____.___1”
@@ -1959,8 +1959,8 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert!(Strict(I16F16::from_num(4.3)).is_positive());
     /// assert!(!Strict(I16F16::ZERO).is_positive());
     /// assert!(!Strict(I16F16::from_num(-4.3)).is_positive());
@@ -1977,8 +1977,8 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert!(!Strict(I16F16::from_num(4.3)).is_negative());
     /// assert!(!Strict(I16F16::ZERO).is_negative());
     /// assert!(Strict(I16F16::from_num(-4.3)).is_negative());
@@ -2004,16 +2004,16 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict(I16F16::from_num(-5)).abs(), Strict(I16F16::from_num(5)));
     /// ```
     ///
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// let _overflow = Strict(I16F16::MIN).abs();
     /// ```
     #[inline]
@@ -2039,8 +2039,8 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict(<I16F16>::from_num(-3.9)).signum(), Strict(I16F16::NEG_ONE));
     /// assert_eq!(Strict(<I16F16>::ZERO).signum(), Strict(I16F16::ZERO));
     /// assert_eq!(Strict(<I16F16>::from_num(3.9)).signum(), Strict(I16F16::ONE));
@@ -2049,8 +2049,8 @@ impl<F: FixedSigned> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::I1F31;
-    /// use fixed::Strict;
+    /// use const_fixed::types::I1F31;
+    /// use const_fixed::Strict;
     /// let _overflow = Strict(<I1F31>::from_num(0.5)).signum();
     /// ```
     #[inline]
@@ -2072,8 +2072,8 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// assert_eq!(
     ///     Strict::<I16F16>::from_num(-5).add_unsigned(U16F16::from_num(3)),
     ///     Strict::<I16F16>::from_num(-2)
@@ -2083,8 +2083,8 @@ impl<F: FixedSigned> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// let _overflow = Strict::<I16F16>::ZERO.add_unsigned(U16F16::MAX);
     /// ```
     #[inline]
@@ -2106,8 +2106,8 @@ impl<F: FixedSigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// assert_eq!(
     ///     Strict::<I16F16>::from_num(3).sub_unsigned(U16F16::from_num(5)),
     ///     Strict::<I16F16>::from_num(-2)
@@ -2117,8 +2117,8 @@ impl<F: FixedSigned> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// let _overflow = Strict::<I16F16>::ZERO.sub_unsigned(U16F16::MAX);
     /// ```
     #[inline]
@@ -2138,8 +2138,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     ///
     /// let n = Strict(U16F16::MAX);
     /// assert_eq!(n.cast_signed(), Strict(-I16F16::DELTA));
@@ -2158,8 +2158,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U4F4;
-    /// use fixed::Strict;
+    /// use const_fixed::types::U4F4;
+    /// use const_fixed::Strict;
     /// assert_eq!(Strict(U4F4::from_num(0)).significant_bits(), 0);      // “____.____”
     /// assert_eq!(Strict(U4F4::from_num(0.0625)).significant_bits(), 1); // “____.___1”
     /// assert_eq!(Strict(U4F4::from_num(1)).significant_bits(), 5);      // “___1.0000”
@@ -2179,8 +2179,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Strict;
     /// assert!(Strict(U16F16::from_num(0.5)).is_power_of_two());
     /// assert!(Strict(U16F16::from_num(4)).is_power_of_two());
     /// assert!(!Strict(U16F16::from_num(5)).is_power_of_two());
@@ -2201,8 +2201,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Strict;
     /// type T = Strict<U16F16>;
     /// assert_eq!(T::from_bits(0b11_0010).highest_one(), T::from_bits(0b10_0000));
     /// assert_eq!(T::from_num(0.3).highest_one(), T::from_num(0.25));
@@ -2228,8 +2228,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Strict;
     /// type T = Strict<U16F16>;
     /// assert_eq!(T::from_bits(0b11_0010).next_power_of_two(), T::from_bits(0b100_0000));
     /// assert_eq!(T::from_num(0.3).next_power_of_two(), T::from_num(0.5));
@@ -2240,8 +2240,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```should_panic
-    /// use fixed::types::U16F16;
-    /// use fixed::Strict;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Strict;
     /// let _overflow = Strict(U16F16::MAX).next_power_of_two();
     /// ```
     #[inline]
@@ -2263,8 +2263,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// assert_eq!(
     ///     Strict::<U16F16>::from_num(5).add_signed(I16F16::from_num(-3)),
     ///     Strict::<U16F16>::from_num(2)
@@ -2274,8 +2274,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// let _overflow = Strict::<U16F16>::ZERO.add_signed(-I16F16::DELTA);
     /// ```
     #[inline]
@@ -2297,8 +2297,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// assert_eq!(
     ///     Strict::<U16F16>::from_num(5).sub_signed(I16F16::from_num(-3)),
     ///     Strict::<U16F16>::from_num(8)
@@ -2308,8 +2308,8 @@ impl<F: FixedUnsigned> Strict<F> {
     /// The following panics because of overflow.
     ///
     /// ```rust,should_panic
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Strict;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Strict;
     /// let _overflow = Strict::<U16F16>::ZERO.sub_signed(I16F16::DELTA);
     /// ```
     #[inline]

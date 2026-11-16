@@ -38,8 +38,8 @@ use core::str::FromStr;
 /// # Examples
 ///
 /// ```rust
-/// use fixed::types::I16F16;
-/// use fixed::Wrapping;
+/// use const_fixed::types::I16F16;
+/// use const_fixed::Wrapping;
 /// let max = Wrapping(I16F16::MAX);
 /// let delta = Wrapping(I16F16::DELTA);
 /// assert_eq!(I16F16::MIN, (max + delta).0);
@@ -57,8 +57,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping::<I16F16>::ZERO, Wrapping(I16F16::ZERO));
     /// ```
     pub const ZERO: Wrapping<F> = Wrapping(F::ZERO);
@@ -71,8 +71,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping::<I16F16>::DELTA, Wrapping(I16F16::DELTA));
     /// ```
     pub const DELTA: Wrapping<F> = Wrapping(F::DELTA);
@@ -85,8 +85,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping::<I16F16>::MIN, Wrapping(I16F16::MIN));
     /// ```
     pub const MIN: Wrapping<F> = Wrapping(F::MIN);
@@ -99,8 +99,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping::<I16F16>::MAX, Wrapping(I16F16::MAX));
     /// ```
     pub const MAX: Wrapping<F> = Wrapping(F::MAX);
@@ -113,8 +113,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Wrapping;
     /// assert!(Wrapping::<I16F16>::IS_SIGNED);
     /// assert!(!Wrapping::<U16F16>::IS_SIGNED);
     /// ```
@@ -128,8 +128,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping::<I16F16>::INT_NBITS, I16F16::INT_NBITS);
     /// ```
     pub const INT_NBITS: u32 = F::INT_NBITS;
@@ -142,8 +142,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping::<I16F16>::FRAC_NBITS, I16F16::FRAC_NBITS);
     /// ```
     pub const FRAC_NBITS: u32 = F::FRAC_NBITS;
@@ -157,8 +157,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping::<I16F16>::from_bits(0x1C), Wrapping(I16F16::from_bits(0x1C)));
     /// ```
     #[inline]
@@ -175,8 +175,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x1C));
     /// assert_eq!(w.to_bits(), 0x1C);
     /// ```
@@ -194,8 +194,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "big") {
     ///     assert_eq!(Wrapping::from_be(w), w);
@@ -217,8 +217,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "little") {
     ///     assert_eq!(Wrapping::from_le(w), w);
@@ -239,8 +239,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "big") {
     ///     assert_eq!(w.to_be(), w);
@@ -262,8 +262,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x1234_5678));
     /// if cfg!(target_endian = "little") {
     ///     assert_eq!(w.to_le(), w);
@@ -285,8 +285,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x1234_5678));
     /// let swapped = Wrapping(I16F16::from_bits(0x7856_3412));
     /// assert_eq!(w.swap_bytes(), swapped);
@@ -307,8 +307,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let bytes = [0x12, 0x34, 0x56, 0x78];
     /// assert_eq!(
     ///     Wrapping::<I16F16>::from_be_bytes(bytes),
@@ -330,8 +330,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let bytes = [0x78, 0x56, 0x34, 0x12];
     /// assert_eq!(
     ///     Wrapping::<I16F16>::from_le_bytes(bytes),
@@ -353,8 +353,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let bytes = if cfg!(target_endian = "big") {
     ///     [0x12, 0x34, 0x56, 0x78]
     /// } else {
@@ -379,8 +379,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(
     ///     Wrapping::<I16F16>::from_bits(0x1234_5678).to_be_bytes(),
     ///     [0x12, 0x34, 0x56, 0x78]
@@ -400,8 +400,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(
     ///     Wrapping::<I16F16>::from_bits(0x1234_5678).to_le_bytes(),
     ///     [0x78, 0x56, 0x34, 0x12]
@@ -421,8 +421,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let bytes = if cfg!(target_endian = "big") {
     ///     [0x12, 0x34, 0x56, 0x78]
     /// } else {
@@ -468,8 +468,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I4F4, I16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I4F4, I16F16};
+    /// use const_fixed::Wrapping;
     ///
     /// // 0x1234.5678 wraps into 0x4.5
     /// let src = I16F16::from_bits(0x1234_5678);
@@ -521,8 +521,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, I2F6, I4F4};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, I2F6, I4F4};
+    /// use const_fixed::Wrapping;
     ///
     /// // conversion that fits
     /// let src = Wrapping(I4F4::from_num(1.75));
@@ -553,8 +553,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// let check = Wrapping(I8F8::from_bits(0b1110001 << (8 - 1)));
     /// assert_eq!(Wrapping::<I8F8>::from_str_binary("101100111000.1"), Ok(check));
     /// ```
@@ -575,8 +575,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// let check = Wrapping(I8F8::from_bits(0o1654 << (8 - 3)));
     /// assert_eq!(Wrapping::<I8F8>::from_str_octal("7165.4"), Ok(check));
     /// ```
@@ -597,8 +597,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// let check = Wrapping(I8F8::from_bits(0xFFE));
     /// assert_eq!(Wrapping::<I8F8>::from_str_hex("C0F.FE"), Ok(check));
     /// ```
@@ -619,8 +619,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// // 16 + 3/4 = 16.75
     /// let check = Wrapping(I8F8::from_bits((16 << 8) + (3 << 8) / 4));
     /// assert_eq!(Wrapping::<I8F8>::from_ascii(b"16.75"), Ok(check));
@@ -642,8 +642,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// let check = Wrapping(I8F8::from_bits(0b1110001 << (8 - 1)));
     /// assert_eq!(Wrapping::<I8F8>::from_ascii_binary(b"101100111000.1"), Ok(check));
     /// ```
@@ -664,8 +664,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// let check = Wrapping(I8F8::from_bits(0o1654 << (8 - 3)));
     /// assert_eq!(Wrapping::<I8F8>::from_ascii_octal(b"7165.4"), Ok(check));
     /// ```
@@ -686,8 +686,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// let check = Wrapping(I8F8::from_bits(0xFFE));
     /// assert_eq!(Wrapping::<I8F8>::from_ascii_hex(b"C0F.FE"), Ok(check));
     /// ```
@@ -711,8 +711,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping(I16F16::from_num(12.25)).int(), Wrapping(I16F16::from_num(12)));
     /// assert_eq!(Wrapping(I16F16::from_num(-12.25)).int(), Wrapping(I16F16::from_num(-13)));
     /// ```
@@ -739,8 +739,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping(I16F16::from_num(12.25)).frac(), Wrapping(I16F16::from_num(0.25)));
     /// assert_eq!(Wrapping(I16F16::from_num(-12.25)).frac(), Wrapping(I16F16::from_num(0.75)));
     /// ```
@@ -761,8 +761,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let three = Wrapping(I16F16::from_num(3));
     /// assert_eq!(Wrapping(I16F16::from_num(3.9)).round_to_zero(), three);
     /// assert_eq!(Wrapping(I16F16::from_num(-3.9)).round_to_zero(), -three);
@@ -783,8 +783,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let two_half = Wrapping(I16F16::from_num(5) / 2);
     /// assert_eq!(two_half.ceil(), Wrapping(I16F16::from_num(3)));
     /// assert_eq!(Wrapping(I16F16::MAX).ceil(), Wrapping(I16F16::MIN));
@@ -808,8 +808,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I0F32, I16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I0F32, I16F16};
+    /// use const_fixed::Wrapping;
     /// let two_half = Wrapping(I16F16::from_num(5) / 2);
     /// assert_eq!(two_half.floor(), Wrapping(I16F16::from_num(2)));
     /// assert_eq!(Wrapping(I0F32::MIN).floor(), Wrapping(I0F32::ZERO));
@@ -830,8 +830,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let two_half = Wrapping(I16F16::from_num(5) / 2);
     /// assert_eq!(two_half.round(), Wrapping(I16F16::from_num(3)));
     /// assert_eq!((-two_half).round(), Wrapping(I16F16::from_num(-3)));
@@ -854,8 +854,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let two_half = Wrapping(I16F16::from_num(2.5));
     /// assert_eq!(two_half.round_ties_even(), Wrapping(I16F16::from_num(2)));
     /// let three_half = Wrapping(I16F16::from_num(3.5));
@@ -877,8 +877,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(w.count_ones(), w.0.count_ones());
     /// ```
@@ -896,8 +896,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(w.count_zeros(), w.0.count_zeros());
     /// ```
@@ -914,8 +914,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(U16F16::from_bits(0xFF00_00FF));
     /// assert_eq!(w.leading_ones(), w.0.leading_ones());
     /// ```
@@ -933,8 +933,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(w.leading_zeros(), w.0.leading_zeros());
     /// ```
@@ -952,8 +952,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(U16F16::from_bits(0xFF00_00FF));
     /// assert_eq!(w.trailing_ones(), w.0.trailing_ones());
     /// ```
@@ -971,8 +971,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let w = Wrapping(I16F16::from_bits(0x00FF_FF00));
     /// assert_eq!(w.trailing_zeros(), w.0.trailing_zeros());
     /// ```
@@ -994,8 +994,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I0F32;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I0F32;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping(I0F32::lit("0b0.0001")).sqrt().0, I0F32::lit("0b0.01"));
     ///
     /// // This method handles the overflow corner case.
@@ -1061,8 +1061,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let i = I16F16::from_bits(0x1234_5678);
     /// assert_eq!(Wrapping(i).reverse_bits(), Wrapping(i.reverse_bits()));
     /// ```
@@ -1080,8 +1080,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let i = I16F16::from_bits(0x00FF_FF00);
     /// assert_eq!(Wrapping(i).rotate_left(12), Wrapping(i.rotate_left(12)));
     /// ```
@@ -1099,8 +1099,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let i = I16F16::from_bits(0x00FF_FF00);
     /// assert_eq!(Wrapping(i).rotate_right(12), Wrapping(i.rotate_right(12)));
     /// ```
@@ -1118,8 +1118,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert!(Wrapping(I16F16::ZERO).is_zero());
     /// assert!(!Wrapping(I16F16::from_num(4.3)).is_zero());
     /// ```
@@ -1137,8 +1137,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// type Wr = Wrapping<I16F16>;
     /// assert_eq!(Wr::from_num(-1).dist(Wr::from_num(4)), Wr::from_num(5));
     /// assert_eq!(Wr::MIN.dist(Wr::MAX), -Wr::DELTA);
@@ -1157,8 +1157,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let three = Wrapping(I16F16::from_num(3));
     /// let four = Wrapping(I16F16::from_num(4));
     /// assert_eq!(three.mean(four), Wrapping(I16F16::from_num(3.5)));
@@ -1179,8 +1179,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F8;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F8;
+    /// use const_fixed::Wrapping;
     /// type Wr = Wrapping<I8F8>;
     /// // hypot(3, 4) == 5
     /// assert_eq!(Wr::from_num(3).hypot(Wr::from_num(4)), Wr::from_num(5));
@@ -1206,8 +1206,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I8F24;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I8F24;
+    /// use const_fixed::Wrapping;
     /// let quarter = Wrapping(I8F24::from_num(0.25));
     /// let frac_1_512 = Wrapping(I8F24::ONE / 512);
     /// assert_eq!(quarter.recip(), Wrapping(I8F24::from_num(4)));
@@ -1234,8 +1234,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let one_point_5 = Wrapping::<I16F16>::from_num(1.5);
     /// let four = Wrapping::<I16F16>::from_num(4);
     /// let four_point_5 = Wrapping::<I16F16>::from_num(4.5);
@@ -1262,8 +1262,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let half = Wrapping(I16F16::from_num(0.5));
     /// let three = Wrapping(I16F16::from_num(3));
     /// let four = Wrapping(I16F16::from_num(4));
@@ -1287,8 +1287,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let half = Wrapping(I16F16::from_num(0.5));
     /// let three = Wrapping(I16F16::from_num(3));
     /// let four = Wrapping(I16F16::from_num(4));
@@ -1312,8 +1312,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let mut acc = Wrapping(I16F16::from_num(3));
     /// acc.mul_acc(Wrapping(I16F16::from_num(4)), Wrapping(I16F16::from_num(0.5)));
     /// assert_eq!(acc, Wrapping(I16F16::from_num(5)));
@@ -1341,8 +1341,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let num = Wrapping(I16F16::from_num(7.5));
     /// let den = Wrapping(I16F16::from_num(2));
     /// assert_eq!(num.div_euclid(den), Wrapping(I16F16::from_num(3)));
@@ -1369,8 +1369,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let num = Wrapping(I16F16::from_num(7.5));
     /// let den = Wrapping(I16F16::from_num(2));
     /// assert_eq!(num.rem_euclid(den), Wrapping(I16F16::from_num(1.5)));
@@ -1397,8 +1397,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let num = Wrapping(I16F16::from_num(7.5));
     /// assert_eq!(num.div_euclid_int(2), Wrapping(I16F16::from_num(3)));
     /// let min = Wrapping(I16F16::MIN);
@@ -1425,8 +1425,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// let num = Wrapping(I16F16::from_num(7.5));
     /// assert_eq!(num.rem_euclid_int(2), Wrapping(I16F16::from_num(1.5)));
     /// assert_eq!((-num).rem_euclid_int(2), Wrapping(I16F16::from_num(0.5)));
@@ -1448,8 +1448,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// type Wr = Wrapping<I16F16>;
     /// let num = Wrapping(I16F16::from_num(1.5));
     /// assert_eq!(num.unbounded_shl(5), num << 5);
@@ -1471,8 +1471,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// type Wr = Wrapping<I16F16>;
     /// let num = Wrapping(I16F16::from_num(1.5));
     /// assert_eq!(num.unbounded_shr(5), num >> 5);
@@ -1495,8 +1495,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// type Wr = Wrapping<I16F16>;
     /// assert_eq!(Wr::from_num(0.5).lerp(Wr::ZERO, Wr::MAX), Wr::MAX / 2);
     /// assert_eq!(Wr::from_num(1.5).lerp(Wr::ZERO, Wr::MAX), Wr::MAX + Wr::MAX / 2);
@@ -1516,8 +1516,8 @@ impl<F: Fixed> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// type Wr = Wrapping<I16F16>;
     /// assert_eq!(
     ///     Wr::from_num(25).inv_lerp(Wr::from_num(20), Wr::from_num(40)),
@@ -1549,8 +1549,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Wrapping;
     ///
     /// let n = Wrapping(-I16F16::DELTA);
     /// assert_eq!(n.cast_unsigned(), Wrapping(U16F16::MAX));
@@ -1572,8 +1572,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I4F4;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I4F4;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping(I4F4::from_num(-3)).signed_bits(), 7);      // “_101.0000”
     /// assert_eq!(Wrapping(I4F4::from_num(-1)).signed_bits(), 5);      // “___1.0000”
     /// assert_eq!(Wrapping(I4F4::from_num(-0.0625)).signed_bits(), 1); // “____.___1”
@@ -1594,8 +1594,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert!(Wrapping(I16F16::from_num(4.3)).is_positive());
     /// assert!(!Wrapping(I16F16::ZERO).is_positive());
     /// assert!(!Wrapping(I16F16::from_num(-4.3)).is_positive());
@@ -1612,8 +1612,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert!(!Wrapping(I16F16::from_num(4.3)).is_negative());
     /// assert!(!Wrapping(I16F16::ZERO).is_negative());
     /// assert!(Wrapping(I16F16::from_num(-4.3)).is_negative());
@@ -1634,8 +1634,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::I16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::I16F16;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping(I16F16::from_num(-5)).abs(), Wrapping(I16F16::from_num(5)));
     /// assert_eq!(Wrapping(I16F16::MIN).abs(), Wrapping(I16F16::MIN));
     /// ```
@@ -1668,8 +1668,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I0F32, I1F31, I16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I0F32, I1F31, I16F16};
+    /// use const_fixed::Wrapping;
     ///
     /// assert_eq!(Wrapping(<I16F16>::from_num(-3.9)).signum(), Wrapping(I16F16::NEG_ONE));
     /// assert_eq!(Wrapping(<I16F16>::ZERO).signum(), Wrapping(I16F16::ZERO));
@@ -1696,8 +1696,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Wrapping;
     /// assert_eq!(
     ///     Wrapping::<I16F16>::from_num(-5).add_unsigned(U16F16::from_num(3)),
     ///     Wrapping::<I16F16>::from_num(-2)
@@ -1721,8 +1721,8 @@ impl<F: FixedSigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Wrapping;
     /// assert_eq!(
     ///     Wrapping::<I16F16>::from_num(3).sub_unsigned(U16F16::from_num(5)),
     ///     Wrapping::<I16F16>::from_num(-2)
@@ -1748,8 +1748,8 @@ impl<F: FixedUnsigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Wrapping;
     ///
     /// let n = Wrapping(U16F16::MAX);
     /// assert_eq!(n.cast_signed(), Wrapping(-I16F16::DELTA));
@@ -1768,8 +1768,8 @@ impl<F: FixedUnsigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U4F4;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::U4F4;
+    /// use const_fixed::Wrapping;
     /// assert_eq!(Wrapping(U4F4::from_num(0)).significant_bits(), 0);      // “____.____”
     /// assert_eq!(Wrapping(U4F4::from_num(0.0625)).significant_bits(), 1); // “____.___1”
     /// assert_eq!(Wrapping(U4F4::from_num(1)).significant_bits(), 5);      // “___1.0000”
@@ -1789,8 +1789,8 @@ impl<F: FixedUnsigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Wrapping;
     /// assert!(Wrapping(U16F16::from_num(0.5)).is_power_of_two());
     /// assert!(Wrapping(U16F16::from_num(4)).is_power_of_two());
     /// assert!(!Wrapping(U16F16::from_num(5)).is_power_of_two());
@@ -1811,8 +1811,8 @@ impl<F: FixedUnsigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Wrapping;
     /// type T = Wrapping<U16F16>;
     /// assert_eq!(T::from_bits(0b11_0010).highest_one(), T::from_bits(0b10_0000));
     /// assert_eq!(T::from_num(0.3).highest_one(), T::from_num(0.25));
@@ -1836,8 +1836,8 @@ impl<F: FixedUnsigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::U16F16;
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::U16F16;
+    /// use const_fixed::Wrapping;
     /// type T = Wrapping<U16F16>;
     /// assert_eq!(T::from_bits(0b11_0010).next_power_of_two(), T::from_bits(0b100_0000));
     /// assert_eq!(T::from_num(0.3).next_power_of_two(), T::from_num(0.5));
@@ -1860,8 +1860,8 @@ impl<F: FixedUnsigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Wrapping;
     /// assert_eq!(
     ///     Wrapping::<U16F16>::from_num(5).add_signed(I16F16::from_num(-3)),
     ///     Wrapping::<U16F16>::from_num(2)
@@ -1885,8 +1885,8 @@ impl<F: FixedUnsigned> Wrapping<F> {
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::types::{I16F16, U16F16};
-    /// use fixed::Wrapping;
+    /// use const_fixed::types::{I16F16, U16F16};
+    /// use const_fixed::Wrapping;
     /// assert_eq!(
     ///     Wrapping::<U16F16>::from_num(5).sub_signed(I16F16::from_num(-3)),
     ///     Wrapping::<U16F16>::from_num(8)
@@ -1979,57 +1979,57 @@ impl<F: Fixed> FromStr for Wrapping<F> {
 }
 
 macro_rules! op {
-    ($Qual:ident, $wrapping:ident, $Op:ident $op:ident, $OpAssign:ident $op_assign:ident) => {
+    ($wrapping:ident, $Op:ident $op:ident, $OpAssign:ident $op_assign:ident) => {
         impl<F: Fixed> $Op<Wrapping<F>> for Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: Wrapping<F>) -> Wrapping<F> {
-                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
+                Wrapping((self.0).$wrapping(other.0))
             }
         }
         impl<F: Fixed> $Op<Wrapping<F>> for &Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: Wrapping<F>) -> Wrapping<F> {
-                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
+                Wrapping((self.0).$wrapping(other.0))
             }
         }
         impl<F: Fixed> $Op<&Wrapping<F>> for Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: &Wrapping<F>) -> Wrapping<F> {
-                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
+                Wrapping((self.0).$wrapping(other.0))
             }
         }
         impl<F: Fixed> $Op<&Wrapping<F>> for &Wrapping<F> {
             type Output = Wrapping<F>;
             #[inline]
             fn $op(self, other: &Wrapping<F>) -> Wrapping<F> {
-                Wrapping(<F as $Qual>::$wrapping(self.0, other.0))
+                Wrapping((self.0).$wrapping(other.0))
             }
         }
         impl<F: Fixed> $OpAssign<Wrapping<F>> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: Wrapping<F>) {
-                self.0 = <F as $Qual>::$wrapping(self.0, other.0);
+                self.0 = (self.0).$wrapping(other.0);
             }
         }
         impl<F: Fixed> $OpAssign<&Wrapping<F>> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: &Wrapping<F>) {
-                self.0 = <F as $Qual>::$wrapping(self.0, other.0);
+                self.0 = (self.0).$wrapping(other.0);
             }
         }
         impl<F: Fixed> $OpAssign<F> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: F) {
-                self.0 = <F as $Qual>::$wrapping(self.0, other);
+                self.0 = (self.0).$wrapping(other);
             }
         }
         impl<F: Fixed> $OpAssign<&F> for Wrapping<F> {
             #[inline]
             fn $op_assign(&mut self, other: &F) {
-                self.0 = <F as $Qual>::$wrapping(self.0, *other);
+                self.0 = (self.0).$wrapping(*other);
             }
         }
     };
@@ -2192,7 +2192,7 @@ impl<F: Fixed> Neg for Wrapping<F> {
     type Output = Wrapping<F>;
     #[inline]
     fn neg(self) -> Wrapping<F> {
-        Wrapping(<F as Fixed>::wrapping_neg(self.0))
+        Wrapping((self.0).wrapping_neg())
     }
 }
 
@@ -2200,14 +2200,14 @@ impl<F: Fixed> Neg for &Wrapping<F> {
     type Output = Wrapping<F>;
     #[inline]
     fn neg(self) -> Wrapping<F> {
-        Wrapping(<F as Fixed>::wrapping_neg(self.0))
+        Wrapping((self.0).wrapping_neg())
     }
 }
-op! { Fixed, wrapping_add, Add add, AddAssign add_assign }
-op! { Fixed, wrapping_sub, Sub sub, SubAssign sub_assign }
-op! { Fixed, wrapping_mul, Mul mul, MulAssign mul_assign }
-op! { Fixed, wrapping_div, Div div, DivAssign div_assign }
-op! { Rem, rem, Rem rem, RemAssign rem_assign }
+op! { wrapping_add, Add add, AddAssign add_assign }
+op! { wrapping_sub, Sub sub, SubAssign sub_assign }
+op! { wrapping_mul, Mul mul, MulAssign mul_assign }
+op! { wrapping_div, Div div, DivAssign div_assign }
+op! { rem, Rem rem, RemAssign rem_assign }
 
 impl<F> Not for Wrapping<F>
 where
