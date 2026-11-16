@@ -73,7 +73,12 @@ jobs:
           - { rust: stable, target: x86_64-unknown-linux-gnu, os: ubuntu-latest }
           - { rust: beta, target: x86_64-unknown-linux-gnu, os: ubuntu-latest }
           - { rust: stable, target: i686-unknown-linux-gnu, os: ubuntu-latest }
-          - { rust: stable, target: x86_64-pc-windows-msvc, os: windows-latest }
+          # defmt needs its linker markers, which MSVC lacks; upstream's AppVeyor job also
+          # leaves defmt out on Windows.
+          - rust: stable
+            target: x86_64-pc-windows-msvc
+            os: windows-latest
+            features: fail-on-warnings arbitrary borsh num-traits serde std
     steps:
       - uses: actions/checkout@v4
         with:
@@ -87,9 +92,9 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           key: ${{ matrix.target }}
-      - run: cargo test --target ${{ matrix.target }} --features "${{ env.ALL_FEATURES }}"
+      - run: cargo test --target ${{ matrix.target }} --features "${{ matrix.features || env.ALL_FEATURES }}"
         shell: bash
-      - run: cargo test --release --target ${{ matrix.target }} --features "${{ env.ALL_FEATURES }}"
+      - run: cargo test --release --target ${{ matrix.target }} --features "${{ matrix.features || env.ALL_FEATURES }}"
         shell: bash
 
   msrv:
