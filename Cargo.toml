@@ -6,16 +6,16 @@
 # without any warranty.
 
 [package]
-name = "fixed"
+name = "const-fixed"
 version = "1.31.0"
 categories = ["algorithms", "embedded", "mathematics", "no-std"]
 description = "Fixed-point numbers."
-documentation = "https://docs.rs/fixed"
+documentation = "https://docs.rs/const-fixed"
 edition = "2024"
 keywords = ["dsp", "embedded", "fixed", "math", "numerics"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
-repository = "https://gitlab.com/tspiteri/fixed"
+repository = "https://github.com/kaidokert/const-fixed-rs"
 rust-version = "1.93"
 
 [dependencies]

@@ -16,7 +16,7 @@
 /*!
 # Fixed-point numbers
 
-The [*fixed* crate] provides fixed-point numbers.
+The [*const-fixed* crate] provides fixed-point numbers.
 
   * [`FixedI8`] and [`FixedU8`] are eight-bit fixed-point numbers.
   * [`FixedI16`] and [`FixedU16`] are 16-bit fixed-point numbers.
@@ -118,7 +118,7 @@ The conversions supported cover the following cases.
 ## Quick examples
 
 ```rust
-use fixed::types::I20F12;
+use const_fixed::types::I20F12;
 
 // 19/3 = 6 1/3
 let six_and_third = I20F12::from_num(19) / 3;
@@ -137,7 +137,7 @@ combinations of integer and fractional bits adding up to a total of eight, 16,
 32, 64 or 128 bits.
 
 ```rust
-use fixed::types::{I4F4, I4F12};
+use const_fixed::types::{I4F4, I4F12};
 
 // -8 ≤ I4F4 < 8 with steps of 1/16 (~0.06)
 let a = I4F4::from_num(1);
@@ -187,7 +187,7 @@ that the difference between two numbers is less than
 <span style="white-space: nowrap;">4 × <i>Δ</i></span>:
 
 ```rust
-use fixed::types::I20F12;
+use const_fixed::types::I20F12;
 
 let a = I20F12::from_num(1.5);
 // b is not exactly 1.5 because of rounding errors
@@ -211,7 +211,7 @@ parse literals. It supports
     including hexadecimal.
 
 ```rust
-use fixed::types::I16F16;
+use const_fixed::types::I16F16;
 
 // 0.1275e2 is 12.75
 const TWELVE_POINT_75: I16F16 = I16F16::lit("0.127_5e2");
@@ -222,21 +222,21 @@ let sum = TWELVE_POINT_75 + ONE_POINT_5;
 assert_eq!(sum, 14.25);
 ```
 
-## Using the *fixed* crate
+## Using the *const-fixed* crate
 
-The *fixed* crate is available on [crates.io][*fixed* crate]. To use it in your
+The *const-fixed* crate is available on [crates.io][*const-fixed* crate]. To use it in your
 crate, add it as a dependency inside [*Cargo.toml*]:
 
 ```toml
 [dependencies]
-fixed = "1.31"
+const-fixed = "1.31"
 ```
 
-The *fixed* crate requires rustc version 1.93.0 or later.
+The *const-fixed* crate requires rustc version 1.93.0 or later.
 
 ## Optional features
 
-The *fixed* crate has these optional feature:
+The *const-fixed* crate has these optional feature:
 
  1. `arbitrary`, disabled by default. This provides the generation of arbitrary
     fixed-point numbers from raw, unstructured data. This feature requires the
@@ -322,7 +322,7 @@ shall be dual licensed as above, without any additional terms or conditions.
 [*arbitrary* crate]: https://crates.io/crates/arbitrary
 [*borsh* crate]: https://crates.io/crates/borsh
 [*cordic* crate]: https://crates.io/crates/cordic
-[*fixed* crate]: https://crates.io/crates/fixed
+[*const-fixed* crate]: https://crates.io/crates/const-fixed
 [*half* crate]: https://crates.io/crates/half
 [*num-traits* crate]: https://crates.io/crates/num-traits
 [*serde* crate]: https://crates.io/crates/serde
@@ -364,7 +364,7 @@ shall be dual licensed as above, without any additional terms or conditions.
 #![cfg_attr(not(feature = "std"), no_std)]
 #![warn(missing_docs)]
 #![warn(unsafe_op_in_unsafe_fn)]
-#![doc(html_root_url = "https://docs.rs/fixed/~1.31")]
+#![doc(html_root_url = "https://docs.rs/const-fixed/~1.31")]
 #![doc(html_logo_url = "data:image/svg+xml;base64,
 PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzMuODY3IDMzLjg2NyIgeG1s
 bnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImIiPjxjaXJjbGUgY3g9IjE2LjkzMyIg
@@ -484,7 +484,7 @@ use core::ops::{Add, Sub};
 ///
 /// ```rust
 /// # #[allow(unused_imports)]
-/// use fixed::prelude::*;
+/// use const_fixed::prelude::*;
 /// ```
 ///
 /// The prelude may grow over time as additional items see ubiquitous use.
@@ -591,8 +591,8 @@ range ",
 # Examples
 
 ```rust
-use fixed::types::extra::U3;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U3;
+use const_fixed::", stringify!($Self), ";
 let eleven = ", stringify!($Self), "::<U3>::from_num(11);
 assert_eq!(eleven, ", stringify!($Self), "::<U3>::from_bits(11 << 3));
 assert_eq!(eleven, 11);
@@ -913,8 +913,8 @@ impl F128Bits {
 ///
 /// ```rust
 /// # #![allow(deprecated)]
-/// use fixed::const_fixed_from_int;
-/// use fixed::types::I16F16;
+/// use const_fixed::const_fixed_from_int;
+/// use const_fixed::types::I16F16;
 /// const_fixed_from_int! {
 ///     // define a constant using an integer
 ///     const FIVE: I16F16 = 5;
@@ -928,7 +928,7 @@ impl F128Bits {
 /// This can now be rewritten as
 ///
 /// ```rust
-/// use fixed::types::I16F16;
+/// use const_fixed::types::I16F16;
 /// const FIVE: I16F16 = I16F16::const_from_int(5);
 /// const SUM: I16F16 = I16F16::const_from_int(3 + 2);
 /// assert_eq!(FIVE, 5);
@@ -948,7 +948,7 @@ macro_rules! const_fixed_from_int {
 /// The first snippet succeeds, and acts as a control.
 ///
 /// ```rust
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// const ZERO_I0: I0F32 = I0F32::const_from_int(0);
 /// const ZERO_I1: I32F0 = I32F0::const_from_int(0);
 /// const ZERO_U0: U0F32 = U0F32::const_from_int(0);
@@ -966,7 +966,7 @@ macro_rules! const_fixed_from_int {
 /// const MINUS_TWO_I1: I32F0 = I32F0::const_from_int(-2);
 ///
 /// mod test_pub {
-///     use fixed::types::*;
+///     use const_fixed::types::*;
 ///
 ///     pub const PUB: I32F0 = I32F0::const_from_int(0);
 /// }
@@ -994,27 +994,27 @@ macro_rules! const_fixed_from_int {
 ///
 /// Not enough integer bits for 1.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// const _ONE: I0F32 = I0F32::const_from_int(1);
 /// ```
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// const _ONE: I1F31 = I1F31::const_from_int(1);
 /// ```
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// const _ONE: U0F32 = U0F32::const_from_int(1);
 /// ```
 ///
 /// Not enough integer bits for -1.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// const _MINUS_ONE: I0F32 = I0F32::const_from_int(-1);
 /// ```
 ///
 /// Not enough integer bits for -2.
 /// ```rust,compile_fail
-/// use fixed::types::*;
+/// use const_fixed::types::*;
 /// const _MINUS_TWO: I1F31 = I1F31::const_from_int(-2);
 /// ```
 fn _compile_fail_tests() {}

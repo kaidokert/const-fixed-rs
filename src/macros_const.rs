@@ -39,9 +39,9 @@ macro_rules! fixed_const {
 # Examples
 
 ```rust
-use fixed::consts;
-use fixed::types::extra::U", $n, ";
-use fixed::", stringify!($Self), ";
+use const_fixed::consts;
+use const_fixed::types::extra::U", $n, ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U", $n, ">;
 assert_eq!(Fix::LOG10_2, Fix::from_num(consts::LOG10_2));
 ```
@@ -84,11 +84,11 @@ than 1 integer bit"
 # Examples
 
 ```rust
-use fixed::consts;
-use fixed::types::extra::U",
+use const_fixed::consts;
+use const_fixed::types::extra::U",
             if_signed_unsigned!($Signedness, $nm1, $n),
             ";
-use fixed::", stringify!($Self), ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U",
             if_signed_unsigned!($Signedness, $nm1, $n),
             ">;
@@ -104,9 +104,9 @@ representable value with ", $n, " fractional bits and 0 integer
 bits is <&nbsp;0.5.
 
 ```rust,compile_fail
-use fixed::consts;
-use fixed::types::extra::U", $n, ";
-use fixed::", stringify!($Self), ";
+use const_fixed::consts;
+use const_fixed::types::extra::U", $n, ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U", $n, ">;
 let _ = Fix::LN_2;
 ```
@@ -124,8 +124,8 @@ let _ = Fix::LN_2;
 # Examples
 
 ```rust
-use fixed::types::extra::U", $nm1, ";
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U", $nm1, ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U", $nm1, ">;
 assert_eq!(Fix::NEG_ONE, Fix::from_num(-1));
 ```
@@ -138,8 +138,8 @@ cannot represent 1, so there is no
 [ONE]: ", stringify!($Self), "::ONE
 
 ```rust,compile_fail
-use fixed::types::extra::U", $nm1, ";
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U", $nm1, ";
+use const_fixed::", stringify!($Self), ";
 const _ERROR: ", stringify!($Self), "<U", $nm1, "> = ", stringify!($Self), "::ONE.unwrapped_neg();
 ```
 ";
@@ -201,11 +201,11 @@ These constants are not representable in ",
 # Examples
 
 ```rust
-use fixed::consts;
-use fixed::types::extra::U",
+use const_fixed::consts;
+use const_fixed::types::extra::U",
             if_signed_unsigned!($Signedness, $nm2, $nm1),
             ";
-use fixed::", stringify!($Self), ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U",
             if_signed_unsigned!($Signedness, $nm2, $nm1),
             ">;
@@ -221,11 +221,11 @@ representable value with ",
             " is <&nbsp;1.
 
 ```rust,compile_fail
-use fixed::consts;
-use fixed::types::extra::U",
+use const_fixed::consts;
+use const_fixed::types::extra::U",
             if_signed_unsigned!($Signedness, $nm1, $n),
             ";
-use fixed::", stringify!($Self), ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U",
             if_signed_unsigned!($Signedness, $nm1, $n),
             ">;
@@ -242,8 +242,8 @@ let _ = Fix::LOG2_E;
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 assert_eq!(Fix::ONE, Fix::from_num(1));
 ```
@@ -302,11 +302,11 @@ These constants are not representable in ",
 # Examples
 
 ```rust
-use fixed::consts;
-use fixed::types::extra::U",
+use const_fixed::consts;
+use const_fixed::types::extra::U",
             if_signed_unsigned!($Signedness, $nm3, $nm2),
             ";
-use fixed::", stringify!($Self), ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U",
             if_signed_unsigned!($Signedness, $nm3, $nm2),
             ">;
@@ -322,11 +322,11 @@ representable value with ",
             " is <&nbsp;2.
 
 ```rust,compile_fail
-use fixed::consts;
-use fixed::types::extra::U",
+use const_fixed::consts;
+use const_fixed::types::extra::U",
             if_signed_unsigned!($Signedness, $nm2, $nm1),
             ";
-use fixed::", stringify!($Self), ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U",
             if_signed_unsigned!($Signedness, $nm2, $nm1),
             ">;
@@ -372,11 +372,11 @@ These constants are not representable in ",
 # Examples
 
 ```rust
-use fixed::consts;
-use fixed::types::extra::U",
+use const_fixed::consts;
+use const_fixed::types::extra::U",
             if_signed_unsigned!($Signedness, $nm4, $nm3),
             ";
-use fixed::", stringify!($Self), ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U",
             if_signed_unsigned!($Signedness, $nm4, $nm3),
             ">;
@@ -392,11 +392,11 @@ representable value with ",
             " integer bits is <&nbsp;4.
 
 ```rust,compile_fail
-use fixed::consts;
-use fixed::types::extra::U",
+use const_fixed::consts;
+use const_fixed::types::extra::U",
             if_signed_unsigned!($Signedness, $nm3, $nm2),
             ";
-use fixed::", stringify!($Self), ";
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U",
             if_signed_unsigned!($Signedness, $nm3, $nm2),
             ">;
