@@ -281,7 +281,11 @@ updated to an incompatible newer version.
  1. `num-traits`, disabled by default. This implements some traits from the
     [*num-traits* crate]. (The plan is to promote this to an optional feature
     once the [*num-traits* crate] reaches version 1.0.0.)
- 2. `nightly-float`, disabled by default. This requires the nightly compiler,
+ 2. `const-num-traits`, **enabled by default**. This implements the same traits
+    from the [*const-num-traits* crate], and adds the [`FixedConstNum`] trait
+    for using them in generic code. It can be enabled together with
+    `num-traits`.
+ 3. `nightly-float`, disabled by default. This requires the nightly compiler,
     and implements conversions and comparisons with the experimental [`f16`] and
     [`f128`] primitives. (The plan is to always implement the conversions and
     comparisons and remove this experimental feature once the primitives are
@@ -325,6 +329,8 @@ shall be dual licensed as above, without any additional terms or conditions.
 [*const-fixed* crate]: https://crates.io/crates/const-fixed
 [*half* crate]: https://crates.io/crates/half
 [*num-traits* crate]: https://crates.io/crates/num-traits
+[*const-num-traits* crate]: https://crates.io/crates/const-num-traits
+[`FixedConstNum`]: crate::traits::FixedConstNum
 [*serde* crate]: https://crates.io/crates/serde
 [*typenum* crate]: https://crates.io/crates/typenum
 [CORDIC]: https://en.wikipedia.org/wiki/CORDIC
@@ -437,6 +443,8 @@ mod hypot;
 #[cfg(feature = "arbitrary")]
 mod impl_arbitrary;
 mod impl_bytemuck;
+#[cfg(feature = "const-num-traits")]
+mod impl_const_num_traits;
 #[cfg(feature = "num-traits")]
 mod impl_num_traits;
 mod int256;
@@ -458,6 +466,8 @@ mod wrapping;
 
 pub use crate::f128::private::F128;
 pub use crate::from_str::ParseFixedError;
+#[cfg(all(feature = "const-num-traits", not(feature = "num-traits")))]
+pub use crate::impl_const_num_traits::RadixParseFixedError;
 #[cfg(feature = "num-traits")]
 pub use crate::impl_num_traits::RadixParseFixedError;
 use crate::log::Base;

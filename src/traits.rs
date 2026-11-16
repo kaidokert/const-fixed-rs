@@ -20,6 +20,8 @@ Traits for conversions and for generic use of fixed-point numbers.
 #![allow(deprecated)]
 
 use crate::helpers::{Private, Sealed, Widest};
+#[cfg(feature = "const-num-traits")]
+pub use crate::impl_const_num_traits::FixedConstNum;
 pub use crate::traits_bits::{
     FixedBits, FixedBitsCast, FixedBitsOptionalArbitrary, FixedBitsOptionalBorsh,
     FixedBitsOptionalNum, FixedBitsOptionalSerde,
@@ -309,7 +311,7 @@ where
 /// use const_fixed::types::{I8F8, I16F16};
 ///
 /// fn checked_add_twice<F: Fixed>(lhs: F, rhs: F) -> Option<F> {
-///     Fixed::checked_add(Fixed::checked_add(lhs, rhs)?, rhs)
+///     lhs.checked_add(rhs)?.checked_add(rhs)
 /// }
 ///
 /// let val1 = checked_add_twice(I8F8::from_num(5), Fixed::from_num(1.75));
@@ -341,7 +343,7 @@ where
 /// where
 ///     u16: Into<F::Bits>,
 /// {
-///     Fixed::checked_add(rhs.checked_mul_int(500.into())?, lhs)
+///     rhs.checked_mul_int(500.into())?.checked_add(lhs)
 /// }
 ///
 /// let val = checked_add_times_500(U12F4::from_num(0.25), Fixed::from_num(1.5));
@@ -360,7 +362,7 @@ where
 /// where
 ///     u16: Into<F::Bits>,
 /// {
-///     Fixed::checked_add(rhs.checked_mul_int(500.into())?, lhs)
+///     rhs.checked_mul_int(500.into())?.checked_add(lhs)
 /// }
 ///
 /// // I12F4::Bits is i16, and u16 does not implement Into<i16>
@@ -381,7 +383,7 @@ where
 /// where
 ///     u16: TryInto<F::Bits>,
 /// {
-///     Fixed::checked_add(rhs.checked_mul_int(500.try_into().ok()?)?, lhs)
+///     rhs.checked_mul_int(500.try_into().ok()?)?.checked_add(lhs)
 /// }
 ///
 /// let val = checked_add_times_500(I12F4::from_num(0.25), Fixed::from_num(1.5));
