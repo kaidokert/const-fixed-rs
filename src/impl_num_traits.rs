@@ -43,7 +43,7 @@ use num_traits::ops::saturating::{SaturatingAdd, SaturatingMul, SaturatingSub};
 use num_traits::ops::wrapping::{
     WrappingAdd, WrappingMul, WrappingNeg, WrappingShl, WrappingShr, WrappingSub,
 };
-use num_traits::sign::{Signed, Signum, Unsigned};
+use num_traits::sign::{Signed, Unsigned};
 
 /// An error which can be returned when parsing a fixed-point number
 /// with a given radix.
@@ -94,11 +94,6 @@ macro_rules! impl_traits {
             fn zero() -> Self {
                 Self::ZERO
             }
-            // const-num-traits strips the `set_zero` default (non-const body).
-            #[inline]
-            fn set_zero(&mut self) {
-                *self = Self::ZERO;
-            }
             #[inline]
             fn is_zero(&self) -> bool {
                 (*self).is_zero()
@@ -116,15 +111,6 @@ macro_rules! impl_traits {
             #[inline]
             fn one() -> Self {
                 Self::ONE
-            }
-            // const-num-traits strips the `set_one`/`is_one` defaults.
-            #[inline]
-            fn set_one(&mut self) {
-                *self = Self::ONE;
-            }
-            #[inline]
-            fn is_one(&self) -> bool {
-                *self == Self::ONE
             }
         }
 
@@ -164,41 +150,33 @@ macro_rules! impl_traits {
 
         if_signed! {
             $Signedness;
-            // const-num-traits extracts `signum` into its own `Signum` atom.
-            impl<Frac: $LeEqU> Signum for $Fixed<Frac>
-            where
-                Frac: IsLessOrEqual<$OneMaxFrac, Output = True>,
-            {
-                type Output = Self;
-                #[inline]
-                fn signum(self) -> Self {
-                    self.signum()
-                }
-            }
-
             impl<Frac: $LeEqU> Signed for $Fixed<Frac>
             where
                 Frac: IsLessOrEqual<$OneMaxFrac, Output = True>,
             {
                 #[inline]
-                fn abs(self) -> Self {
-                    self.abs()
+                fn abs(&self) -> Self {
+                    (*self).abs()
                 }
                 #[inline]
-                fn abs_sub(self, other: Self) -> Self {
-                    if self < other {
+                fn abs_sub(&self, other: &Self) -> Self {
+                    if *self < *other {
                         Self::ZERO
                     } else {
-                        self - other
+                        *self - *other
                     }
                 }
                 #[inline]
-                fn is_positive(self) -> bool {
-                    self.is_positive()
+                fn signum(&self) -> Self {
+                    (*self).signum()
                 }
                 #[inline]
-                fn is_negative(self) -> bool {
-                    self.is_negative()
+                fn is_positive(&self) -> bool {
+                    (*self).is_positive()
+                }
+                #[inline]
+                fn is_negative(&self) -> bool {
+                    (*self).is_negative()
                 }
             }
         }
@@ -213,204 +191,166 @@ macro_rules! impl_traits {
         }
 
         impl<Frac: $LeEqU> Euclid for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn div_euclid(self, v: Self) -> Self {
-                self.div_euclid(v)
+            fn div_euclid(&self, v: &Self) -> Self {
+                (*self).div_euclid(*v)
             }
 
             #[inline]
-            fn rem_euclid(self, v: Self) -> Self {
-                self.rem_euclid(v)
-            }
-
-            // const-num-traits strips the `div_rem_euclid` default.
-            #[inline]
-            fn div_rem_euclid(self, v: Self) -> (Self, Self) {
-                (self.div_euclid(v), self.rem_euclid(v))
+            fn rem_euclid(&self, v: &Self) -> Self {
+                (*self).rem_euclid(*v)
             }
         }
 
         impl<Frac> CheckedAdd for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn checked_add(self, v: Self) -> Option<Self> {
-                self.checked_add(v)
+            fn checked_add(&self, v: &Self) -> Option<Self> {
+                (*self).checked_add(*v)
             }
         }
 
         impl<Frac> CheckedSub for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn checked_sub(self, v: Self) -> Option<Self> {
-                self.checked_sub(v)
+            fn checked_sub(&self, v: &Self) -> Option<Self> {
+                (*self).checked_sub(*v)
             }
         }
 
         impl<Frac> CheckedNeg for $Fixed<Frac> {
-            // const-num-traits' neg-on-unsigned ops carry a fresh `Output`.
-            type Output = Self;
             #[inline]
-            fn checked_neg(self) -> Option<Self> {
-                self.checked_neg()
+            fn checked_neg(&self) -> Option<Self> {
+                (*self).checked_neg()
             }
         }
 
         impl<Frac: $LeEqU> CheckedMul for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn checked_mul(self, v: Self) -> Option<Self> {
-                self.checked_mul(v)
+            fn checked_mul(&self, v: &Self) -> Option<Self> {
+                (*self).checked_mul(*v)
             }
         }
 
         impl<Frac: $LeEqU> CheckedDiv for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn checked_div(self, v: Self) -> Option<Self> {
-                self.checked_div(v)
+            fn checked_div(&self, v: &Self) -> Option<Self> {
+                (*self).checked_div(*v)
             }
         }
 
         impl<Frac> CheckedRem for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn checked_rem(self, v: Self) -> Option<Self> {
-                self.checked_rem(v)
+            fn checked_rem(&self, v: &Self) -> Option<Self> {
+                (*self).checked_rem(*v)
             }
         }
 
         impl<Frac> CheckedShl for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn checked_shl(self, rhs: u32) -> Option<Self> {
-                self.checked_shl(rhs)
+            fn checked_shl(&self, rhs: u32) -> Option<Self> {
+                (*self).checked_shl(rhs)
             }
         }
 
         impl<Frac> CheckedShr for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn checked_shr(self, rhs: u32) -> Option<Self> {
-                self.checked_shr(rhs)
+            fn checked_shr(&self, rhs: u32) -> Option<Self> {
+                (*self).checked_shr(rhs)
             }
         }
 
         impl<Frac: $LeEqU> CheckedEuclid for $Fixed<Frac> {
             #[inline]
-            fn checked_div_euclid(self, v: Self) -> Option<Self> {
-                self.checked_div_euclid(v)
+            fn checked_div_euclid(&self, v: &Self) -> Option<Self> {
+                (*self).checked_div_euclid(*v)
             }
 
             #[inline]
-            fn checked_rem_euclid(self, v: Self) -> Option<Self> {
-                self.checked_rem_euclid(v)
-            }
-
-            // const-num-traits strips the `checked_div_rem_euclid` default.
-            #[inline]
-            fn checked_div_rem_euclid(self, v: Self) -> Option<(Self, Self)> {
-                match (self.checked_div_euclid(v), self.checked_rem_euclid(v)) {
-                    (Some(d), Some(r)) => Some((d, r)),
-                    _ => None,
-                }
+            fn checked_rem_euclid(&self, v: &Self) -> Option<Self> {
+                (*self).checked_rem_euclid(*v)
             }
         }
 
         impl<Frac> SaturatingAdd for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn saturating_add(self, v: Self) -> Self {
-                self.saturating_add(v)
+            fn saturating_add(&self, v: &Self) -> Self {
+                (*self).saturating_add(*v)
             }
         }
 
         impl<Frac> SaturatingSub for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn saturating_sub(self, v: Self) -> Self {
-                self.saturating_sub(v)
+            fn saturating_sub(&self, v: &Self) -> Self {
+                (*self).saturating_sub(*v)
             }
         }
 
         impl<Frac: $LeEqU> SaturatingMul for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn saturating_mul(self, v: Self) -> Self {
-                self.saturating_mul(v)
+            fn saturating_mul(&self, v: &Self) -> Self {
+                (*self).saturating_mul(*v)
             }
         }
 
         impl<Frac> WrappingAdd for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn wrapping_add(self, v: Self) -> Self {
-                self.wrapping_add(v)
+            fn wrapping_add(&self, v: &Self) -> Self {
+                (*self).wrapping_add(*v)
             }
         }
 
         impl<Frac> WrappingSub for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn wrapping_sub(self, v: Self) -> Self {
-                self.wrapping_sub(v)
+            fn wrapping_sub(&self, v: &Self) -> Self {
+                (*self).wrapping_sub(*v)
             }
         }
 
         impl<Frac> WrappingNeg for $Fixed<Frac> {
-            // const-num-traits' neg-on-unsigned ops carry a fresh `Output`.
-            type Output = Self;
             #[inline]
-            fn wrapping_neg(self) -> Self {
-                self.wrapping_neg()
+            fn wrapping_neg(&self) -> Self {
+                (*self).wrapping_neg()
             }
         }
 
         impl<Frac: $LeEqU> WrappingMul for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn wrapping_mul(self, v: Self) -> Self {
-                self.wrapping_mul(v)
+            fn wrapping_mul(&self, v: &Self) -> Self {
+                (*self).wrapping_mul(*v)
             }
         }
 
         impl<Frac> WrappingShl for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn wrapping_shl(self, rhs: u32) -> Self {
-                self.wrapping_shl(rhs)
+            fn wrapping_shl(&self, rhs: u32) -> Self {
+                (*self).wrapping_shl(rhs)
             }
         }
 
         impl<Frac> WrappingShr for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn wrapping_shr(self, rhs: u32) -> Self {
-                self.wrapping_shr(rhs)
+            fn wrapping_shr(&self, rhs: u32) -> Self {
+                (*self).wrapping_shr(rhs)
             }
         }
 
         impl<Frac> OverflowingAdd for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn overflowing_add(self, v: Self) -> (Self, bool) {
-                self.overflowing_add(v)
+            fn overflowing_add(&self, v: &Self) -> (Self, bool) {
+                (*self).overflowing_add(*v)
             }
         }
 
         impl<Frac> OverflowingSub for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn overflowing_sub(self, v: Self) -> (Self, bool) {
-                self.overflowing_sub(v)
+            fn overflowing_sub(&self, v: &Self) -> (Self, bool) {
+                (*self).overflowing_sub(*v)
             }
         }
 
         impl<Frac: $LeEqU> OverflowingMul for $Fixed<Frac> {
-            type Output = Self;
             #[inline]
-            fn overflowing_mul(self, v: Self) -> (Self, bool) {
-                self.overflowing_mul(v)
+            fn overflowing_mul(&self, v: &Self) -> (Self, bool) {
+                (*self).overflowing_mul(*v)
             }
         }
 
@@ -629,16 +569,16 @@ macro_rules! impl_traits {
         impl<Frac: $LeEqU> ToBytes for $Fixed<Frac> {
             type Bytes = <Self as Fixed>::Bytes;
 
-            fn to_be_bytes(self) -> Self::Bytes {
-                self.to_be_bytes()
+            fn to_be_bytes(&self) -> Self::Bytes {
+                (*self).to_be_bytes()
             }
 
-            fn to_le_bytes(self) -> Self::Bytes {
-                self.to_le_bytes()
+            fn to_le_bytes(&self) -> Self::Bytes {
+                (*self).to_le_bytes()
             }
 
-            fn to_ne_bytes(self) -> Self::Bytes {
-                self.to_ne_bytes()
+            fn to_ne_bytes(&self) -> Self::Bytes {
+                (*self).to_ne_bytes()
             }
         }
 

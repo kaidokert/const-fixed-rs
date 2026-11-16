@@ -1950,57 +1950,57 @@ impl<F: Fixed> FromStr for Saturating<F> {
 }
 
 macro_rules! op {
-    ($Qual:ident, $saturating:ident, $Op:ident $op:ident, $OpAssign:ident $op_assign:ident) => {
+    ($saturating:ident, $Op:ident $op:ident, $OpAssign:ident $op_assign:ident) => {
         impl<F: Fixed> $Op<Saturating<F>> for Saturating<F> {
             type Output = Saturating<F>;
             #[inline]
             fn $op(self, other: Saturating<F>) -> Saturating<F> {
-                Saturating(<F as $Qual>::$saturating(self.0, other.0))
+                Saturating((self.0).$saturating(other.0))
             }
         }
         impl<F: Fixed> $Op<Saturating<F>> for &Saturating<F> {
             type Output = Saturating<F>;
             #[inline]
             fn $op(self, other: Saturating<F>) -> Saturating<F> {
-                Saturating(<F as $Qual>::$saturating(self.0, other.0))
+                Saturating((self.0).$saturating(other.0))
             }
         }
         impl<F: Fixed> $Op<&Saturating<F>> for Saturating<F> {
             type Output = Saturating<F>;
             #[inline]
             fn $op(self, other: &Saturating<F>) -> Saturating<F> {
-                Saturating(<F as $Qual>::$saturating(self.0, other.0))
+                Saturating((self.0).$saturating(other.0))
             }
         }
         impl<F: Fixed> $Op<&Saturating<F>> for &Saturating<F> {
             type Output = Saturating<F>;
             #[inline]
             fn $op(self, other: &Saturating<F>) -> Saturating<F> {
-                Saturating(<F as $Qual>::$saturating(self.0, other.0))
+                Saturating((self.0).$saturating(other.0))
             }
         }
         impl<F: Fixed> $OpAssign<Saturating<F>> for Saturating<F> {
             #[inline]
             fn $op_assign(&mut self, other: Saturating<F>) {
-                self.0 = <F as $Qual>::$saturating(self.0, other.0);
+                self.0 = (self.0).$saturating(other.0);
             }
         }
         impl<F: Fixed> $OpAssign<&Saturating<F>> for Saturating<F> {
             #[inline]
             fn $op_assign(&mut self, other: &Saturating<F>) {
-                self.0 = <F as $Qual>::$saturating(self.0, other.0);
+                self.0 = (self.0).$saturating(other.0);
             }
         }
         impl<F: Fixed> $OpAssign<F> for Saturating<F> {
             #[inline]
             fn $op_assign(&mut self, other: F) {
-                self.0 = <F as $Qual>::$saturating(self.0, other);
+                self.0 = (self.0).$saturating(other);
             }
         }
         impl<F: Fixed> $OpAssign<&F> for Saturating<F> {
             #[inline]
             fn $op_assign(&mut self, other: &F) {
-                self.0 = <F as $Qual>::$saturating(self.0, *other);
+                self.0 = (self.0).$saturating(*other);
             }
         }
     };
@@ -2102,11 +2102,11 @@ impl<F: Fixed> Neg for &Saturating<F> {
         Saturating((self.0).saturating_neg())
     }
 }
-op! { Fixed, saturating_add, Add add, AddAssign add_assign }
-op! { Fixed, saturating_sub, Sub sub, SubAssign sub_assign }
-op! { Fixed, saturating_mul, Mul mul, MulAssign mul_assign }
-op! { Fixed, saturating_div, Div div, DivAssign div_assign }
-op! { Rem, rem, Rem rem, RemAssign rem_assign }
+op! { saturating_add, Add add, AddAssign add_assign }
+op! { saturating_sub, Sub sub, SubAssign sub_assign }
+op! { saturating_mul, Mul mul, MulAssign mul_assign }
+op! { saturating_div, Div div, DivAssign div_assign }
+op! { rem, Rem rem, RemAssign rem_assign }
 
 impl<F> Not for Saturating<F>
 where
