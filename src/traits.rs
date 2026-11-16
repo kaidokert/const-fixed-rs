@@ -305,8 +305,8 @@ where
 /// # Examples
 ///
 /// ```rust
-/// use fixed::traits::Fixed;
-/// use fixed::types::{I8F8, I16F16};
+/// use const_fixed::traits::Fixed;
+/// use const_fixed::types::{I8F8, I16F16};
 ///
 /// fn checked_add_twice<F: Fixed>(lhs: F, rhs: F) -> Option<F> {
 ///     lhs.checked_add(rhs)?.checked_add(rhs)
@@ -323,7 +323,7 @@ where
 /// infer that 500 in the `checked_mul_int` call is of type `F::Bits`.
 ///
 /// ```rust,compile_fail
-/// use fixed::traits::Fixed;
+/// use const_fixed::traits::Fixed;
 ///
 /// fn checked_add_times_500<F: Fixed>(lhs: F, rhs: F) -> Option<F> {
 ///     rhs.checked_mul_int(500)?.checked_add(lhs)
@@ -334,8 +334,8 @@ where
 /// [`u16`] (which can represent 500) can be converted into `F::Bits`.
 ///
 /// ```rust
-/// use fixed::traits::Fixed;
-/// use fixed::types::U12F4;
+/// use const_fixed::traits::Fixed;
+/// use const_fixed::types::U12F4;
 ///
 /// fn checked_add_times_500<F: Fixed>(lhs: F, rhs: F) -> Option<F>
 /// where
@@ -353,8 +353,8 @@ where
 /// following example would fail to compile.
 ///
 /// ```rust,compile_fail
-/// use fixed::traits::Fixed;
-/// use fixed::types::I12F4;
+/// use const_fixed::traits::Fixed;
+/// use const_fixed::types::I12F4;
 ///
 /// fn checked_add_times_500<F: Fixed>(lhs: F, rhs: F) -> Option<F>
 /// where
@@ -374,8 +374,8 @@ where
 /// is [`u8`] or [`i8`].)
 ///
 /// ```rust
-/// use fixed::traits::Fixed;
-/// use fixed::types::I12F4;
+/// use const_fixed::traits::Fixed;
+/// use const_fixed::types::I12F4;
 ///
 /// fn checked_add_times_500<F: Fixed>(lhs: F, rhs: F) -> Option<F>
 /// where
@@ -429,8 +429,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::I16F16;
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::I16F16;
     /// // 32-bit DELTA is 0x0000_0001_i32
     /// const DELTA_BITS: <I16F16 as Fixed>::Bits = I16F16::DELTA.to_bits();
     /// assert_eq!(DELTA_BITS, 1i32);
@@ -442,8 +442,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::I16F16;
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::I16F16;
     /// let val = I16F16::from_num(31);
     /// let non_zero_5 = <I16F16 as Fixed>::NonZeroBits::new(5).unwrap();
     /// assert_eq!(val % non_zero_5, val % 5);
@@ -457,8 +457,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::I16F16;
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::I16F16;
     /// // 32-bit DELTA is 0x0000_0001_i32
     /// const DELTA_LE_BYTES: <I16F16 as Fixed>::Bytes = I16F16::DELTA.to_le_bytes();
     /// assert_eq!(DELTA_LE_BYTES, 1i32.to_le_bytes());
@@ -476,9 +476,9 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::extra::U16;
-    /// use fixed::{FixedI32, FixedI64};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::extra::U16;
+    /// use const_fixed::{FixedI32, FixedI64};
     /// type Fix1 = FixedI32::<U16>;
     /// assert_eq!(Fix1::FRAC_NBITS, 16);
     /// assert_eq!(Fix1::INT_NBITS, 32 - 16);
@@ -500,8 +500,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     /// // I16F16::Signed is I16F16
     /// assert_eq!(<I16F16 as Fixed>::Signed::FRAC_NBITS, I16F16::FRAC_NBITS);
     /// assert_eq!(<I16F16 as Fixed>::Signed::INT_NBITS, I16F16::INT_NBITS);
@@ -525,8 +525,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     /// // I16F16::Unsigned is U16F16
     /// assert_eq!(<I16F16 as Fixed>::Unsigned::FRAC_NBITS, U16F16::FRAC_NBITS);
     /// assert_eq!(<I16F16 as Fixed>::Unsigned::INT_NBITS, U16F16::INT_NBITS);
@@ -552,8 +552,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     ///
     /// let i = -I16F16::DELTA;
     /// let u = U16F16::MAX;
@@ -577,8 +577,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     ///
     /// let i = -I16F16::DELTA;
     /// let u = U16F16::MAX;
@@ -597,8 +597,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     ///
     /// let i = I16F16::from_num(-3.5);
     /// match i.get_signed() {
@@ -624,8 +624,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     ///
     /// let u = U16F16::from_num(3.5);
     /// match u.get_unsigned() {
@@ -651,8 +651,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     ///
     /// let mut i = I16F16::from_num(-3.5);
     /// match i.get_signed_mut() {
@@ -679,8 +679,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// use fixed::traits::Fixed;
-    /// use fixed::types::{I16F16, U16F16};
+    /// use const_fixed::traits::Fixed;
+    /// use const_fixed::types::{I16F16, U16F16};
     ///
     /// let mut u = U16F16::from_num(3.5);
     /// match u.get_unsigned_mut() {
@@ -4490,8 +4490,8 @@ where
 /// # Examples
 ///
 /// ```rust
-/// use fixed::traits::LosslessTryFrom;
-/// use fixed::types::{I24F8, I4F12};
+/// use const_fixed::traits::LosslessTryFrom;
+/// use const_fixed::types::{I24F8, I4F12};
 /// // original is 0x000001.23, lossless is 0x1.230
 /// let original = I24F8::from_bits(0x0000_0123);
 /// let lossless = I4F12::lossless_try_from(original);
@@ -4517,8 +4517,8 @@ pub trait LosslessTryFrom<Src>: Sized {
 /// # Examples
 ///
 /// ```rust
-/// use fixed::traits::LosslessTryInto;
-/// use fixed::types::{I24F8, I4F12};
+/// use const_fixed::traits::LosslessTryInto;
+/// use const_fixed::types::{I24F8, I4F12};
 /// // original is 0x000001.23, lossless is 0x1.230
 /// let original = I24F8::from_bits(0x0000_0123);
 /// let lossless: Option<I4F12> = original.lossless_try_into();
@@ -4550,8 +4550,8 @@ where
 /// # Examples
 ///
 /// ```rust
-/// use fixed::traits::LossyFrom;
-/// use fixed::types::{I12F4, I8F24};
+/// use const_fixed::traits::LossyFrom;
+/// use const_fixed::types::{I12F4, I8F24};
 /// // original is 0x12.345678, lossy is 0x012.3
 /// let original = I8F24::from_bits(0x1234_5678);
 /// let lossy = I12F4::lossy_from(original);
@@ -4572,8 +4572,8 @@ pub trait LossyFrom<Src> {
 /// # Examples
 ///
 /// ```rust
-/// use fixed::traits::LossyInto;
-/// use fixed::types::{I12F4, I8F24};
+/// use const_fixed::traits::LossyInto;
+/// use const_fixed::types::{I12F4, I8F24};
 /// // original is 0x12.345678, lossy is 0x012.3
 /// let original = I8F24::from_bits(0x1234_5678);
 /// let lossy: I12F4 = original.lossy_into();
@@ -4601,8 +4601,8 @@ where
 /// # Examples
 ///
 /// ```rust
-/// use fixed::traits::FromFixed;
-/// use fixed::types::U8F8;
+/// use const_fixed::traits::FromFixed;
+/// use const_fixed::types::U8F8;
 /// // 0x87.65
 /// let f = U8F8::from_bits(0x8765);
 /// assert_eq!(f32::from_fixed(f), f32::from(0x8765u16) / 256.0);
@@ -4707,8 +4707,8 @@ pub trait FromFixed {
 /// # Examples
 ///
 /// ```rust
-/// use fixed::traits::ToFixed;
-/// use fixed::types::{U8F8, U16F16};
+/// use const_fixed::traits::ToFixed;
+/// use const_fixed::types::{U8F8, U16F16};
 /// let f: U8F8 = 13.5f32.to_fixed();
 /// assert_eq!(f, U8F8::from_bits((13 << 8) | (1 << 7)));
 /// // 0x1234.5678 is too large and can be wrapped to 0x34.56
@@ -4842,7 +4842,7 @@ pub trait ToFixed {
 /// An [`i32`] can be treated as an [`I32F0`].
 ///
 /// ```rust
-/// use fixed::traits::{Fixed, FixedEquiv};
+/// use const_fixed::traits::{Fixed, FixedEquiv};
 ///
 /// fn next_up<F: Fixed>(f: &mut F) {
 ///     *f += F::DELTA;
@@ -4857,8 +4857,8 @@ pub trait ToFixed {
 /// Simlarly, an [`I32F0`] can be treated as an [`i32`].
 ///
 /// ```rust
-/// use fixed::traits::FixedEquiv;
-/// use fixed::types::I32F0;
+/// use const_fixed::traits::FixedEquiv;
+/// use const_fixed::types::I32F0;
 ///
 /// fn increase_by_5(i: &mut i32) {
 ///     *i += 5;

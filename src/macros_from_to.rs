@@ -50,9 +50,9 @@ it panics; if wrapping is required use [`wrapping_from_num`] instead.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -117,9 +117,9 @@ it panics; if wrapping is required use [`wrapping_to_num`] instead.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::types::I30F2;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::types::I30F2;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -183,9 +183,9 @@ The other number can be:
 # Examples
 
 ```rust
-use fixed::types::extra::{U2, U4};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U2, U4};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -249,9 +249,9 @@ The other number can be:
 # Examples
 
 ```rust
-use fixed::types::extra::{U0, U4, U6};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U0, U4, U6};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -318,9 +318,9 @@ This method panics if the value is a floating-point [NaN].
 # Examples
 
 ```rust
-use fixed::types::extra::{U2, U4};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U2, U4};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -385,9 +385,9 @@ The other number can be:
 # Examples
 
 ```rust
-use fixed::types::extra::{U0, U4, U6};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U0, U4, U6};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -451,9 +451,9 @@ For floating-point numbers, panics if the value is not [finite].
 # Examples
 
 ```rust
-use fixed::types::extra::{U0, U4};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U0, U4};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -510,9 +510,9 @@ The other number can be:
 # Examples
 
 ```rust
-use fixed::types::extra::{U0, U4, U6};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U0, U4, U6};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -578,9 +578,9 @@ For floating-point numbers, also panics if the value is not [finite].
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -591,8 +591,8 @@ assert_eq!(Fix::strict_from_num(src), Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of overflow.
 
 ```should_panic
-use fixed::types::extra::{U0, U4};
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::{U0, U4};
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 let too_large = ", stringify!($Self), "::<U0>::from_bits(0b1101 << (", $n, " - 7));
 let _overflow = Fix::strict_from_num(too_large);
@@ -637,9 +637,9 @@ Panics if the value does not fit.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -651,8 +651,8 @@ assert_eq!(src.strict_to_num::<I16F16>(), expected);
 The following panics because of overflow.
 
 ```should_panic
-use fixed::types::extra::{U4, U6};
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::{U4, U6};
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 type TooFewIntBits = ", stringify!($Self), "<U6>;
 let _overflow = Fix::MAX.strict_to_num::<TooFewIntBits>();
@@ -698,9 +698,9 @@ For floating-point numbers, panics if the value is not [finite].
 # Examples
 
 ```rust
-use fixed::types::extra::{U0, U4};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U0, U4};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -761,9 +761,9 @@ The other number can be:
 # Examples
 
 ```rust
-use fixed::types::extra::{U0, U4, U6};
-use fixed::types::I16F16;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::{U0, U4, U6};
+use const_fixed::types::I16F16;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), "<U4>;
 
 // 1.75 is 1.11 in binary
@@ -824,8 +824,8 @@ assert_eq!(one_point_625.overflowing_to_num::<f32>(), (1.625f32, false));
         /// # Examples
         ///
         /// ```rust
-        /// use fixed::types::extra::{U2, U4};
-        #[doc = concat!("use fixed::", stringify!($Self), ";")]
+        /// use const_fixed::types::extra::{U2, U4};
+        #[doc = concat!("use const_fixed::", stringify!($Self), ";")]
         #[doc = concat!("type FixA = ", stringify!($Self), "<U2>;")]
         #[doc = concat!("type FixB = ", stringify!($Self), "<U4>;")]
         /// const A: FixA = FixA::strict_from_str("3.5");
@@ -836,8 +836,8 @@ assert_eq!(one_point_625.overflowing_to_num::<f32>(), (1.625f32, false));
         /// The following would fail to compile because of overflow.
         ///
         /// ```rust,compile_fail
-        /// use fixed::types::extra::{U2, U4};
-        #[doc = concat!("use fixed::", stringify!($Self), ";")]
+        /// use const_fixed::types::extra::{U2, U4};
+        #[doc = concat!("use const_fixed::", stringify!($Self), ";")]
         #[doc = concat!(
             "const _OVERFLOW: ", stringify!($Self), "<U4> = ", stringify!($Self), "::const_from_fixed(", stringify!($Self), "::<U2>::MAX);"
         )]
@@ -893,8 +893,8 @@ assert_eq!(one_point_625.overflowing_to_num::<f32>(), (1.625f32, false));
         /// # Examples
         ///
         /// ```rust
-        /// use fixed::types::extra::U4;
-        #[doc = concat!("use fixed::", stringify!($Self), ";")]
+        /// use const_fixed::types::extra::U4;
+        #[doc = concat!("use const_fixed::", stringify!($Self), ";")]
         #[doc = concat!("type Fix = ", stringify!($Self), "<U4>;")]
         /// const FIVE: Fix = Fix::const_from_int(5);
         /// assert_eq!(FIVE, 5);
@@ -903,8 +903,8 @@ assert_eq!(one_point_625.overflowing_to_num::<f32>(), (1.625f32, false));
         /// The following would fail to compile because of overflow.
         ///
         /// ```rust,compile_fail
-        /// use fixed::types::extra::U4;
-        #[doc = concat!("use fixed::", stringify!($Self), ";")]
+        /// use const_fixed::types::extra::U4;
+        #[doc = concat!("use const_fixed::", stringify!($Self), ";")]
         #[doc = concat!(
             "const _OVERFLOW: ", stringify!($Self), "<U4> = ",
             stringify!($Self), "::const_from_int(",
@@ -966,8 +966,8 @@ in an inline constant expression, or used to initialize a constant.
 For example, here `lit` would be evaluated at compile time:
 
 ```rust
-# use fixed::types::extra::U4;
-# use fixed::FixedU32;
+# use const_fixed::types::extra::U4;
+# use const_fixed::FixedU32;
 # type Fix = FixedU32<U4>;
 const ONE_AND_HALF: Fix = Fix::lit("1.5");
 # assert_eq!(ONE_AND_HALF, 1.5);
@@ -976,8 +976,8 @@ const ONE_AND_HALF: Fix = Fix::lit("1.5");
 However, here `lit` would be evaluated at run time:
 
 ```rust
-# use fixed::types::extra::U4;
-# use fixed::FixedU32;
+# use const_fixed::types::extra::U4;
+# use const_fixed::FixedU32;
 # type Fix = FixedU32<U4>;
 // Evaluated at run time.
 let one_and_half = Fix::lit("1.5");
@@ -987,8 +987,8 @@ let one_and_half = Fix::lit("1.5");
 To evaluate at compile time without introducing a constant into the scope:
 
 ```rust
-# use fixed::types::extra::U4;
-# use fixed::FixedU32;
+# use const_fixed::types::extra::U4;
+# use const_fixed::FixedU32;
 # type Fix = FixedU32<U4>;
 let one_and_half = const { Fix::lit("1.5") };
 # assert_eq!(one_and_half, 1.5);
@@ -1001,8 +1001,8 @@ Panics if the number is not valid or overflows.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 
 assert_eq!(Fix::lit("1.75"), 1.75);
@@ -1042,8 +1042,8 @@ assert_eq!(Fix::lit("0x0.1C@1"), 1.75);
 This method is useful to write constant fixed-point literals.
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 const ONE_AND_HALF: Fix = Fix::lit("1.5");
 assert_eq!(ONE_AND_HALF, 1.5);
@@ -1073,8 +1073,8 @@ value is scaled by 10 to the power of the exponent.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 assert_eq!(Fix::from_str("1.75"), Ok(Fix::from_num(1.75)));
 "#,
@@ -1110,8 +1110,8 @@ radix is 2, base-2 exponents are equivalent to the other form of exponent.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.11 in binary is 1.75
 assert_eq!(Fix::from_str_binary("1.11"), Ok(Fix::from_num(1.75)));
@@ -1150,8 +1150,8 @@ parsed value is scaled by 2 to the power of the exponent. For example, for octal
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary, 1.6 in octal
 let f = Fix::from_str_octal("1.6");
@@ -1191,8 +1191,8 @@ hexadecimal “`P8`” means ×2⁸, and is equivalent to “`@2`” which means
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.C in hexadecimal is 1.75
 assert_eq!(Fix::from_str_hex("1.C"), Ok(Fix::from_num(1.75)));
@@ -1225,8 +1225,8 @@ value is scaled by 10 to the power of the exponent.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 assert_eq!(Fix::from_ascii(b"1.75"), Ok(Fix::from_num(1.75)));
 "#,
@@ -1265,8 +1265,8 @@ radix is 2, base-2 exponents are equivalent to the other form of exponent.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.11 in binary is 1.75
 assert_eq!(Fix::from_ascii_binary(b"1.11"), Ok(Fix::from_num(1.75)));
@@ -1308,8 +1308,8 @@ parsed value is scaled by 2 to the power of the exponent. For example, for octal
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary, 1.6 in octal
 let f = Fix::from_ascii_octal(b"1.6");
@@ -1353,8 +1353,8 @@ hexadecimal “`P8`” means ×2⁸, and is equivalent to “`@2`” which means
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.C in hexadecimal is 1.75
 assert_eq!(Fix::from_ascii_hex(b"1.C"), Ok(Fix::from_num(1.75)));
@@ -1389,11 +1389,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_str("9999"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_str("-9999"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_str("9999"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_str("-1"), Ok(U8F8::ZERO));
 "#,
@@ -1418,11 +1418,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_str_binary("101100111000"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_str_binary("-101100111000"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_str_binary("101100111000"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_str_binary("-1"), Ok(U8F8::ZERO));
 "#,
@@ -1449,11 +1449,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_str_octal("7777"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_str_octal("-7777"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_str_octal("7777"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_str_octal("-1"), Ok(U8F8::ZERO));
 "#,
@@ -1480,11 +1480,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_str_hex("FFFF"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_str_hex("-FFFF"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_str_hex("FFFF"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_str_hex("-1"), Ok(U8F8::ZERO));
 "#,
@@ -1511,11 +1511,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_ascii(b"9999"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_ascii(b"-9999"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_ascii(b"9999"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_ascii(b"-1"), Ok(U8F8::ZERO));
 "#,
@@ -1543,11 +1543,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_ascii_binary(b"101100111000"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_ascii_binary(b"-101100111000"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_ascii_binary(b"101100111000"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_ascii_binary(b"-1"), Ok(U8F8::ZERO));
 "#,
@@ -1577,11 +1577,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_ascii_octal(b"7777"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_ascii_octal(b"-7777"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_ascii_octal(b"7777"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_ascii_octal(b"-1"), Ok(U8F8::ZERO));
 "#,
@@ -1611,11 +1611,11 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::saturating_from_ascii_hex(b"FFFF"), Ok(I8F8::MAX));
 assert_eq!(I8F8::saturating_from_ascii_hex(b"-FFFF"), Ok(I8F8::MIN));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::saturating_from_ascii_hex(b"FFFF"), Ok(U8F8::MAX));
 assert_eq!(U8F8::saturating_from_ascii_hex(b"-1"), Ok(U8F8::ZERO));
 "#,
@@ -1645,12 +1645,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(I8F8::wrapping_from_str("9999.5"), Ok(I8F8::from_num(15.5)));
 assert_eq!(I8F8::wrapping_from_str("-9999.5"), Ok(I8F8::from_num(-15.5)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(U8F8::wrapping_from_str("9999.5"), Ok(U8F8::from_num(15.5)));
 assert_eq!(U8F8::wrapping_from_str("-9999.5"), Ok(U8F8::from_num(240.5)));
@@ -1676,12 +1676,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(I8F8::wrapping_from_str_binary("101100111000.1"), Ok(check));
 assert_eq!(I8F8::wrapping_from_str_binary("-101100111000.1"), Ok(-check));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(U8F8::wrapping_from_str_binary("101100111000.1"), Ok(check));
 assert_eq!(U8F8::wrapping_from_str_binary("-101100111000.1"), Ok(check.wrapping_neg()));
@@ -1709,12 +1709,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(I8F8::wrapping_from_str_octal("7165.4"), Ok(check));
 assert_eq!(I8F8::wrapping_from_str_octal("-7165.4"), Ok(-check));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(U8F8::wrapping_from_str_octal("7165.4"), Ok(check));
 assert_eq!(U8F8::wrapping_from_str_octal("-7165.4"), Ok(check.wrapping_neg()));
@@ -1742,12 +1742,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0xFFE);
 assert_eq!(I8F8::wrapping_from_str_hex("C0F.FE"), Ok(check));
 assert_eq!(I8F8::wrapping_from_str_hex("-C0F.FE"), Ok(-check));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0xFFE);
 assert_eq!(U8F8::wrapping_from_str_hex("C0F.FE"), Ok(check));
 assert_eq!(U8F8::wrapping_from_str_hex("-C0F.FE"), Ok(check.wrapping_neg()));
@@ -1773,12 +1773,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(I8F8::wrapping_from_ascii(b"9999.5"), Ok(I8F8::from_num(15.5)));
 assert_eq!(I8F8::wrapping_from_ascii(b"-9999.5"), Ok(I8F8::from_num(-15.5)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(U8F8::wrapping_from_ascii(b"9999.5"), Ok(U8F8::from_num(15.5)));
 assert_eq!(U8F8::wrapping_from_ascii(b"-9999.5"), Ok(U8F8::from_num(240.5)));
@@ -1807,12 +1807,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(I8F8::wrapping_from_ascii_binary(b"101100111000.1"), Ok(check));
 assert_eq!(I8F8::wrapping_from_ascii_binary(b"-101100111000.1"), Ok(-check));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(U8F8::wrapping_from_ascii_binary(b"101100111000.1"), Ok(check));
 assert_eq!(U8F8::wrapping_from_ascii_binary(b"-101100111000.1"), Ok(check.wrapping_neg()));
@@ -1843,12 +1843,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(I8F8::wrapping_from_ascii_octal(b"7165.4"), Ok(check));
 assert_eq!(I8F8::wrapping_from_ascii_octal(b"-7165.4"), Ok(-check));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(U8F8::wrapping_from_ascii_octal(b"7165.4"), Ok(check));
 assert_eq!(U8F8::wrapping_from_ascii_octal(b"-7165.4"), Ok(check.wrapping_neg()));
@@ -1879,12 +1879,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0xFFE);
 assert_eq!(I8F8::wrapping_from_ascii_hex(b"C0F.FE"), Ok(check));
 assert_eq!(I8F8::wrapping_from_ascii_hex(b"-C0F.FE"), Ok(-check));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0xFFE);
 assert_eq!(U8F8::wrapping_from_ascii_hex(b"C0F.FE"), Ok(check));
 assert_eq!(U8F8::wrapping_from_ascii_hex(b"-C0F.FE"), Ok(check.wrapping_neg()));
@@ -1914,8 +1914,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary
 let f = Fix::strict_from_str("1.75");
@@ -1925,8 +1925,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_str("1.75.");
 ```
@@ -1952,8 +1952,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary
 let f = Fix::strict_from_str_binary("1.11");
@@ -1963,8 +1963,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_str_binary("1.2");
 ```
@@ -1990,8 +1990,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary, 1.6 in octal
 let f = Fix::strict_from_str_octal("1.6");
@@ -2001,8 +2001,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_str_octal("1.8");
 ```
@@ -2028,8 +2028,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary, 1.C in hexadecimal
 let f = Fix::strict_from_str_hex("1.C");
@@ -2039,8 +2039,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_str_hex("1.G");
 ```
@@ -2066,8 +2066,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary
 let f = Fix::strict_from_ascii(b"1.75");
@@ -2077,8 +2077,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_ascii(b"1.75.");
 ```
@@ -2107,8 +2107,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary
 let f = Fix::strict_from_ascii_binary(b"1.11");
@@ -2118,8 +2118,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_ascii_binary(b"1.2");
 ```
@@ -2148,8 +2148,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary, 1.6 in octal
 let f = Fix::strict_from_ascii_octal(b"1.6");
@@ -2159,8 +2159,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_ascii_octal(b"1.8");
 ```
@@ -2189,8 +2189,8 @@ Panics if the value does not fit or if there is a parsing error.
 # Examples
 
 ```rust
-use fixed::types::extra::U4;
-use fixed::", stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::", stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 // 1.75 is 1.11 in binary, 1.C in hexadecimal
 let f = Fix::strict_from_ascii_hex(b"1.C");
@@ -2200,8 +2200,8 @@ assert_eq!(f, Fix::from_bits(0b111 << (4 - 2)));
 The following panics because of a parsing error.
 
 ```rust,should_panic
-use fixed::types::extra::U4;
-use fixed::"#, stringify!($Self), ";
+use const_fixed::types::extra::U4;
+use const_fixed::"#, stringify!($Self), ";
 type Fix = ", stringify!($Self), r#"<U4>;
 let _error = Fix::strict_from_ascii_hex(b"1.G");
 ```
@@ -2232,12 +2232,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::overflowing_from_str("99.5"), Ok((I8F8::from_num(99.5), false)));
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(I8F8::overflowing_from_str("-9999.5"), Ok((I8F8::from_num(-15.5), true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::overflowing_from_str("99.5"), Ok((U8F8::from_num(99.5), false)));
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(U8F8::overflowing_from_str("9999.5"), Ok((U8F8::from_num(15.5), true)));
@@ -2268,12 +2268,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(I8F8::overflowing_from_str_binary("111000.1"), Ok((check, false)));
 assert_eq!(I8F8::overflowing_from_str_binary("-101100111000.1"), Ok((-check, true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(U8F8::overflowing_from_str_binary("111000.1"), Ok((check, false)));
 assert_eq!(U8F8::overflowing_from_str_binary("101100111000.1"), Ok((check, true)));
@@ -2304,12 +2304,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(I8F8::overflowing_from_str_octal("165.4"), Ok((check, false)));
 assert_eq!(I8F8::overflowing_from_str_octal("-7165.4"), Ok((-check, true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(U8F8::overflowing_from_str_octal("165.4"), Ok((check, false)));
 assert_eq!(U8F8::overflowing_from_str_octal("7165.4"), Ok((check, true)));
@@ -2340,12 +2340,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0xFFE);
 assert_eq!(I8F8::overflowing_from_str_hex("F.FE"), Ok((check, false)));
 assert_eq!(I8F8::overflowing_from_str_hex("-C0F.FE"), Ok((-check, true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0xFFE);
 assert_eq!(U8F8::overflowing_from_str_hex("F.FE"), Ok((check, false)));
 assert_eq!(U8F8::overflowing_from_str_hex("C0F.FE"), Ok((check, true)));
@@ -2376,12 +2376,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 assert_eq!(I8F8::overflowing_from_ascii(b"99.5"), Ok((I8F8::from_num(99.5), false)));
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(I8F8::overflowing_from_ascii(b"-9999.5"), Ok((I8F8::from_num(-15.5), true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 assert_eq!(U8F8::overflowing_from_ascii(b"99.5"), Ok((U8F8::from_num(99.5), false)));
 // 9999.5 = 15.5 + 256 × n
 assert_eq!(U8F8::overflowing_from_ascii(b"9999.5"), Ok((U8F8::from_num(15.5), true)));
@@ -2416,12 +2416,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(I8F8::overflowing_from_ascii_binary(b"111000.1"), Ok((check, false)));
 assert_eq!(I8F8::overflowing_from_ascii_binary(b"-101100111000.1"), Ok((-check, true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0b1110001 << (8 - 1));
 assert_eq!(U8F8::overflowing_from_ascii_binary(b"111000.1"), Ok((check, false)));
 assert_eq!(U8F8::overflowing_from_ascii_binary(b"101100111000.1"), Ok((check, true)));
@@ -2456,12 +2456,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(I8F8::overflowing_from_ascii_octal(b"165.4"), Ok((check, false)));
 assert_eq!(I8F8::overflowing_from_ascii_octal(b"-7165.4"), Ok((-check, true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0o1654 << (8 - 3));
 assert_eq!(U8F8::overflowing_from_ascii_octal(b"165.4"), Ok((check, false)));
 assert_eq!(U8F8::overflowing_from_ascii_octal(b"7165.4"), Ok((check, true)));
@@ -2496,12 +2496,12 @@ Rounding is to the nearest, with ties rounded to even.
 ",
             if_signed_unsigned!(
                 $Signedness,
-                r#"use fixed::types::I8F8;
+                r#"use const_fixed::types::I8F8;
 let check = I8F8::from_bits(0xFFE);
 assert_eq!(I8F8::overflowing_from_ascii_hex(b"F.FE"), Ok((check, false)));
 assert_eq!(I8F8::overflowing_from_ascii_hex(b"-C0F.FE"), Ok((-check, true)));
 "#,
-                r#"use fixed::types::U8F8;
+                r#"use const_fixed::types::U8F8;
 let check = U8F8::from_bits(0xFFE);
 assert_eq!(U8F8::overflowing_from_ascii_hex(b"F.FE"), Ok((check, false)));
 assert_eq!(U8F8::overflowing_from_ascii_hex(b"C0F.FE"), Ok((check, true)));
