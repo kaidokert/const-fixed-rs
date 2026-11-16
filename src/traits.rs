@@ -309,7 +309,7 @@ where
 /// use fixed::types::{I8F8, I16F16};
 ///
 /// fn checked_add_twice<F: Fixed>(lhs: F, rhs: F) -> Option<F> {
-///     lhs.checked_add(rhs)?.checked_add(rhs)
+///     Fixed::checked_add(Fixed::checked_add(lhs, rhs)?, rhs)
 /// }
 ///
 /// let val1 = checked_add_twice(I8F8::from_num(5), Fixed::from_num(1.75));
@@ -341,7 +341,7 @@ where
 /// where
 ///     u16: Into<F::Bits>,
 /// {
-///     rhs.checked_mul_int(500.into())?.checked_add(lhs)
+///     Fixed::checked_add(rhs.checked_mul_int(500.into())?, lhs)
 /// }
 ///
 /// let val = checked_add_times_500(U12F4::from_num(0.25), Fixed::from_num(1.5));
@@ -360,7 +360,7 @@ where
 /// where
 ///     u16: Into<F::Bits>,
 /// {
-///     rhs.checked_mul_int(500.into())?.checked_add(lhs)
+///     Fixed::checked_add(rhs.checked_mul_int(500.into())?, lhs)
 /// }
 ///
 /// // I12F4::Bits is i16, and u16 does not implement Into<i16>
@@ -381,7 +381,7 @@ where
 /// where
 ///     u16: TryInto<F::Bits>,
 /// {
-///     rhs.checked_mul_int(500.try_into().ok()?)?.checked_add(lhs)
+///     Fixed::checked_add(rhs.checked_mul_int(500.try_into().ok()?)?, lhs)
 /// }
 ///
 /// let val = checked_add_times_500(I12F4::from_num(0.25), Fixed::from_num(1.5));
